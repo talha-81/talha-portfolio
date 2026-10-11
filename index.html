@@ -60,6 +60,24 @@
     </script>
   </head>
   <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <input type="tel" name="phone" />
+      <select name="topic">
+        <option>General inquiry</option>
+        <option>Web application</option>
+        <option>Management system</option>
+        <option>AI chatbot / agent</option>
+        <option>Automation</option>
+        <option>Machine learning / computer vision</option>
+        <option>Other</option>
+      </select>
+      <textarea name="message"></textarea>
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

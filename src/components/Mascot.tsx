@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import { useLocation } from "react-router";
 import { sectionTips } from "../data/mascotTips.ts";
 import { projectBySlug } from "../data/projects.ts";
-import { MASCOT_CELEBRATE_EVENT } from "../lib/mascot.ts";
+import { MASCOT_CELEBRATE_EVENT, MASCOT_TIP_EVENT } from "../lib/mascot.ts";
 import { EASE } from "../lib/motion.ts";
 import { useFineHover } from "../lib/useFineHover.ts";
 
@@ -49,15 +49,17 @@ export function Mascot() {
   const [suppressHover, setSuppressHover] = useState(false);
   const [paused, setPaused] = useState(false);
   const [active, setActive] = useState<ActiveTip | null>(null);
+  const [forcedTip, setForcedTip] = useState<string | null>(null);
   const [bubbleBox, setBubbleBox] = useState<{ left: number; top: number } | null>(null);
   const section = sectionTip(pathname);
   const showingSection = pinned || (fineHover && mascotHover && !suppressHover);
-  const text = active?.text ?? (showingSection ? section : null);
+  const text = active?.text ?? forcedTip ?? (showingSection ? section : null);
   const [seenPath, setSeenPath] = useState(pathname);
   if (seenPath !== pathname) {
     setSeenPath(pathname);
     setActive(null);
     setPinned(false);
+    setForcedTip(null);
   }
 
   useEffect(() => {
@@ -250,7 +252,19 @@ export function Mascot() {
         .then(() => setPaused(false));
     };
     window.addEventListener(MASCOT_CELEBRATE_EVENT, onCelebrate);
-    return () => window.removeEventListener(MASCOT_CELEBRATE_EVENT, onCelebrate);
+    const onTip = (event: Event) => {
+      const detail = (event as CustomEvent<string>).detail;
+      if (!detail) return;
+      setForcedTip(detail);
+      setPinned(true);
+      setActive(null);
+      setSuppressHover(false);
+    };
+    window.addEventListener(MASCOT_TIP_EVENT, onTip);
+    return () => {
+      window.removeEventListener(MASCOT_CELEBRATE_EVENT, onCelebrate);
+      window.removeEventListener(MASCOT_TIP_EVENT, onTip);
+    };
   }, [controls, reduce]);
 
   useEffect(() => {
@@ -259,6 +273,7 @@ export function Mascot() {
       if (event.key !== "Escape") return;
       setPinned(false);
       setActive(null);
+      setForcedTip(null);
       setSuppressHover(true);
       buttonRef.current?.focus();
     };
@@ -269,6 +284,7 @@ export function Mascot() {
   function onMascotClick() {
     if (text && !active) {
       setPinned(false);
+      setForcedTip(null);
       setSuppressHover(true);
       return;
     }

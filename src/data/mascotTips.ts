@@ -17,7 +17,7 @@ export const navTips: Record<string, string> = {
   "/projects": "Work you can open. Public repositories are linked from the project.",
   "/ai": "Chatbots, voice agents, MCP, and automation.",
   "/skills": "The technologies behind the projects.",
-  "/contact": "WhatsApp, Email, GitHub, and LinkedIn. There is no form.",
+  "/contact": "Send a message, or use WhatsApp, Email, GitHub, or LinkedIn.",
   "/faq": "A few answers before you write.",
 };
 

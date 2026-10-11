@@ -16,7 +16,7 @@ Built with React, Vite, TypeScript, Tailwind CSS, Framer Motion, React Router, a
 - `/contact` WhatsApp, Email, GitHub, and LinkedIn buttons
 - `/faq` FAQ
 
-Contact is icon-and-label buttons only. The phone number is shown only inside the WhatsApp popover. That popover can open the chat or copy the number. There is no contact form.
+Contact has a form plus WhatsApp, Email, GitHub, and LinkedIn buttons. The phone number is shown only inside the WhatsApp popover. That popover can open the chat or copy the number.
 
 ## Run locally
 
@@ -47,6 +47,10 @@ The repo includes `netlify.toml`:
 The public site is [https://talha-ai.netlify.app/](https://talha-ai.netlify.app/).
 
 Connect the repository in Netlify and use the settings from that file. No environment variables are required. This project is not deployed from here.
+
+## Contact form
+
+The contact page submits to Netlify Forms. There is no separate backend. After a deploy, Talha must enable form detection and email notifications in the Netlify dashboard: Site configuration > Forms, then Form notifications > Email to tarshad587@gmail.com.
 
 ## Theme
 
