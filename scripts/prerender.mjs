@@ -54,9 +54,21 @@ for (const route of routes) {
     '<div id="root"></div>',
     `<div id="root">${html}</div>`,
   );
-  const relative = isMissing ? "404.html" : route === "/" ? "index.html" : `${route.slice(1)}/index.html`;
+  const relative = isMissing ? "404.html" : route === "/" ? "index.html" : `${route.slice(1)}.html`;
   const target = join(distDir, relative);
   mkdirSync(dirname(target), { recursive: true });
   writeFileSync(target, page);
   console.log("prerendered", relative);
 }
+
+// Flat files (contact.html), not contact/index.html. Netlify serves /contact
+// from contact.html with status 200. A directory index 301s /contact to /contact/.
+const redirectLines = [
+  "# Generated at build time. No-slash paths rewrite to the flat HTML file.",
+  ...routes
+    .filter((route) => route !== "/" && route !== "/404")
+    .map((route) => `${route}  ${route}.html  200`),
+  "/*  /404.html  404",
+];
+writeFileSync(join(distDir, "_redirects"), `${redirectLines.join("\n")}\n`);
+console.log("wrote _redirects", redirectLines.length - 1, "rules");

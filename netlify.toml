@@ -2,13 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
-# Prerendered routes are real files and are served first.
-# Unknown URLs get the static 404 page with a 404 status.
-
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
+# Routes are flat HTML files (about.html, projects/vehicle-detection.html).
+# The build writes dist/_redirects so /about rewrites to /about.html with
+# status 200. A contact/index.html publish would 301 /contact to /contact/.
+# The last generated rule sends unknown paths to /404.html with status 404.
 
 [[headers]]
   for = "/assets/*"
