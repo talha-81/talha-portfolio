@@ -2,9 +2,39 @@
   command = "npm run build"
   publish = "dist"
 
-# The site is one scrolling page (no client-side router). This fallback
-# still serves the app for any direct path so Netlify does not 404 a refresh
-# if routes are added later. Existing files in dist/ are served first.
+# SPA fallbacks. Netlify serves real files first, then these rules, so a
+# refresh on any client route still returns the app.
+
+[[redirects]]
+  from = "/about"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/projects"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/projects/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/ai"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/skills"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/index.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

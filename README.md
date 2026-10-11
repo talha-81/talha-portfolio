@@ -1,8 +1,20 @@
 # Talha Arshad — Portfolio
 
-Personal site for Talha Arshad, a software engineer in Pakistan. Dark layout inspired by the Zedian portfolio template: neon green on slate, a draggable ID badge, and a stacking project deck.
+Personal site for Talha Arshad, a software engineer in Pakistan. Dark mode keeps the neon-green look. A light theme is included, and the choice follows the system until it is saved.
 
-Built with React, Vite, TypeScript, Tailwind CSS, Framer Motion, and lucide-react.
+Built with React, Vite, TypeScript, Tailwind CSS, Framer Motion, React Router, and lucide-react.
+
+## Pages
+
+- `/` Home
+- `/about` About
+- `/projects` Project list
+- `/projects/:slug` Project detail
+- `/ai` AI products
+- `/skills` Skills
+- `/contact` WhatsApp, GitHub, and LinkedIn
+
+Contact is those three links only. There is no email address and no form on the site.
 
 ## Run locally
 
@@ -27,9 +39,13 @@ The repo includes `netlify.toml`:
 
 - Build command: `npm run build`
 - Publish directory: `dist`
-- SPA fallback: `/*` → `/index.html` (status 200), so a refreshed path still serves the app
+- SPA redirects for `/about`, `/projects`, `/projects/*`, `/ai`, `/skills`, `/contact`, and a `/*` fallback to `/index.html` (status 200)
 
 Connect the repository in Netlify and use the settings from that file. No environment variables are required. This project is not deployed from here.
+
+## Theme
+
+An inline script in `index.html` sets `data-theme` before paint, using the saved choice or `prefers-color-scheme`. The toggle stores the choice in `localStorage` as `theme` (`light` or `dark`).
 
 ## Portrait
 
@@ -37,9 +53,13 @@ The hero ID card uses `public/avatar/talha.webp` (WebP, 1086×1448). `src/compon
 
 ## Mascot
 
-Zoru sits fixed at the bottom-right. Talha is the site owner. The artwork files are:
+Zoru is always shown, fixed at the bottom-right. There is no hide control. On a desktop pointer, the tip opens on hover and on click. On touch devices, tap opens it. Reduced-motion users get a static Zoru. The artwork files are:
 
 - `public/mascot/zoru-chibi-512.webp` (323×512, used first)
 - `public/mascot/zoru-chibi.png` (454×720 fallback)
 
-The hide choice is stored in `localStorage` as `zoru-mascot-hidden`. A future contact form can call `celebrateZoru()` from `src/lib/mascot.ts` after a successful send. GitHub and LinkedIn clicks fire that jump for now.
+GitHub, LinkedIn, and WhatsApp clicks call `celebrateZoru()` from `src/lib/mascot.ts`.
+
+## Figures
+
+`src/data/stats.ts` holds the figures on the site. Projects delivered follows the project list. Satisfied clients stays hidden until a real number is set there.
