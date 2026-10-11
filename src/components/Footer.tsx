@@ -3,7 +3,8 @@ import { ArrowUp } from "lucide-react";
 import type { MouseEvent } from "react";
 import { Link } from "react-router";
 import { aiWorkflowLine, availability, footerLinks, profile, serviceAreas, services } from "../data/content.ts";
-import { navTips, serviceTips, startProjectTip } from "../data/mascotTips.ts";
+import { navTips, serviceTips } from "../data/mascotTips.ts";
+import { StartProjectLink } from "./StartProjectLink.tsx";
 import { ContactButtons } from "./ContactButtons.tsx";
 
 const year = 2026;
@@ -59,13 +60,9 @@ export function Footer() {
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{availability}</p>
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <Link
-              to="/contact"
-              data-mascot-tip={startProjectTip}
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-accent px-6 py-4 text-base font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:text-lg"
-            >
+            <StartProjectLink className="inline-flex min-h-11 items-center justify-center rounded-full bg-accent px-6 py-4 text-base font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:text-lg">
               Start a project
-            </Link>
+            </StartProjectLink>
             <ContactButtons size="lg" labels={["WhatsApp", "Email"]} />
           </div>
         </div>

@@ -2,7 +2,8 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { navLinks } from "../data/content.ts";
-import { navTips, startProjectTip } from "../data/mascotTips.ts";
+import { navTips } from "../data/mascotTips.ts";
+import { StartProjectLink } from "./StartProjectLink.tsx";
 import { ThemeToggle } from "./ThemeToggle.tsx";
 
 export function Navbar() {
@@ -66,14 +67,10 @@ export function Navbar() {
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <ThemeToggle />
-          <Link
-            to="/contact"
-            data-mascot-tip={startProjectTip}
-            className="hidden min-h-11 items-center rounded-full bg-accent px-3 text-xs font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:inline-flex xl:px-4 xl:text-sm"
-          >
+          <StartProjectLink className="hidden min-h-11 items-center rounded-full bg-accent px-3 text-xs font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:inline-flex xl:px-4 xl:text-sm">
             <span className="xl:hidden">Start</span>
             <span className="hidden xl:inline">Start a project</span>
-          </Link>
+          </StartProjectLink>
           <button
             type="button"
             className="grid h-11 w-11 place-items-center rounded-full border border-line text-fg lg:hidden"
@@ -108,13 +105,9 @@ export function Navbar() {
               </NavLink>
             ))}
           </nav>
-          <Link
-            to="/contact"
-            data-mascot-tip={startProjectTip}
-            className="mt-8 inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink"
-          >
+          <StartProjectLink className="mt-8 inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink">
             Start a project
-          </Link>
+          </StartProjectLink>
         </div>
       ) : null}
     </header>

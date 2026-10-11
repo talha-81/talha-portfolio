@@ -12,7 +12,8 @@ import { ServiceMark } from "../components/ServiceMark.tsx";
 import { SpotlightCard } from "../components/SpotlightCard.tsx";
 import { StatsRow } from "../components/StatsRow.tsx";
 import { aiWorkflowLine, availability, services } from "../data/content.ts";
-import { serviceTips, startProjectTip } from "../data/mascotTips.ts";
+import { serviceTips } from "../data/mascotTips.ts";
+import { StartProjectLink } from "../components/StartProjectLink.tsx";
 import { homeProjects } from "../data/projects.ts";
 import { primaryBtn, secondaryBtn } from "../lib/styles.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
@@ -77,10 +78,10 @@ export function HomePage() {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact" data-mascot-tip={startProjectTip} className={primaryBtn}>
+              <StartProjectLink className={primaryBtn}>
                 Start a project
                 <ArrowUpRight size={18} />
-              </Link>
+              </StartProjectLink>
               <Link to="/projects" data-mascot-tip="Open the full project list." className={secondaryBtn}>
                 View projects
               </Link>
