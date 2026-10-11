@@ -226,6 +226,9 @@ export function Mascot() {
   }, [active, look, reduce]);
 
   useEffect(() => {
+    // The portal mounts one commit after hydration. Starting the spring before
+    // that leaves the mascot stuck on its initial opacity of 0.
+    if (!mounted) return;
     if (reduce) {
       void controls.set({ opacity: 1, y: 0, scale: 1, rotate: 0 });
       return;
@@ -237,7 +240,7 @@ export function Mascot() {
       rotate: 0,
       transition: { type: "spring", stiffness: 460, damping: 14 },
     });
-  }, [controls, reduce]);
+  }, [controls, mounted, reduce]);
 
   useEffect(() => {
     const onCelebrate = () => {
