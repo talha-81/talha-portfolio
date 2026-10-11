@@ -50,6 +50,8 @@ export function Mascot() {
   const [paused, setPaused] = useState(false);
   const [active, setActive] = useState<ActiveTip | null>(null);
   const [forcedTip, setForcedTip] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const [bubbleBox, setBubbleBox] = useState<{ left: number; top: number } | null>(null);
   const section = sectionTip(pathname);
   const showingSection = pinned || (fineHover && mascotHover && !suppressHover);
@@ -315,6 +317,8 @@ export function Mascot() {
     </AnimatePresence>
   );
 
+  if (!mounted) return null;
+
   return createPortal(
     <>
       {bubble}
@@ -357,7 +361,8 @@ export function Mascot() {
                   <source srcSet="/mascot/mascot-chibi-512.webp" type="image/webp" />
                   <img
                     src="/mascot/mascot-chibi.png"
-                    alt="Talha Arshad, a chibi illustration with green hair"
+                    alt="Talha Arshad illustrated as a chibi with green hair"
+                    loading="lazy"
                     width={323}
                     height={512}
                     draggable={false}

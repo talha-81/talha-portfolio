@@ -15,6 +15,7 @@ const filters: { id: Filter; label: string }[] = [
 
 function ProjectStack() {
   const cards = homeProjects();
+  const priorityIndex = cards.findIndex((project) => project.cover);
   return (
     <div className="relative mx-auto h-72 w-full max-w-md sm:h-80" aria-hidden="true">
       {cards.map((project, index) => (
@@ -27,7 +28,7 @@ function ProjectStack() {
             transform: `translateX(-50%) rotate(${index === 0 ? -7 : index === 1 ? 5 : -2}deg)`,
           }}
         >
-          <ProjectCover project={project} />
+          <ProjectCover project={project} priority={index === priorityIndex} />
         </div>
       ))}
     </div>
@@ -35,10 +36,7 @@ function ProjectStack() {
 }
 
 export function ProjectsPage() {
-  usePageMeta(
-    "Projects — Talha Arshad",
-    "Web systems, AI products, computer vision, machine learning, and data work by Talha Arshad. Public repositories are linked. Client systems are not.",
-  );
+  usePageMeta();
   const [filter, setFilter] = useState<Filter>("all");
   const visible = filter === "all" ? groups : groups.filter((group) => group.id === filter);
 

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
+import { pageSeo } from "../data/seo.ts";
 import { canonicalUrl, OG_IMAGE_URL } from "./site.ts";
 
 type Gtag = (...args: unknown[]) => void;
@@ -24,10 +25,11 @@ function upsertCanonical(href: string) {
   element.setAttribute("href", href);
 }
 
-export function usePageMeta(title: string, description: string) {
+export function usePageMeta() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    const { title, description } = pageSeo(pathname);
     const url = canonicalUrl(pathname);
     document.title = title;
     upsertMeta("name", "description", description);
@@ -36,6 +38,7 @@ export function usePageMeta(title: string, description: string) {
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:url", url);
     upsertMeta("property", "og:image", OG_IMAGE_URL);
+    upsertMeta("property", "og:type", "website");
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
@@ -49,5 +52,5 @@ export function usePageMeta(title: string, description: string) {
         page_title: title,
       });
     }
-  }, [title, description, pathname]);
+  }, [pathname]);
 }

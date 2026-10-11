@@ -12,10 +12,7 @@ import { secondaryBtn } from "../lib/styles.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
 
 export function AboutPage() {
-  usePageMeta(
-    "About — Talha Arshad",
-    "Talha Arshad is a software engineer with 5+ years building web applications, APIs, AI features, and data products. Available worldwide, remote, 24/7.",
-  );
+  usePageMeta();
 
   return (
     <>
@@ -38,15 +35,18 @@ export function AboutPage() {
             <span className="float-slow absolute -top-3 -left-3 h-16 w-16 rounded-2xl border border-accent/40 bg-accent/10" />
             <span className="float-slow absolute -right-2 bottom-10 h-12 w-12 rounded-full border border-line bg-surface" style={{ animationDelay: "1.2s" }} />
             <div className="relative overflow-hidden rounded-[32px] border border-line bg-surface shadow-[var(--shadow)]">
-              <img
-                src="/avatar/talha.webp"
-                alt="Talha Arshad"
-                width={1086}
-                height={1448}
-                decoding="async"
-                fetchPriority="high"
-                className="aspect-[3/4] w-full object-cover object-[center_18%]"
-              />
+              <picture>
+                <source srcSet="/avatar/talha.avif" type="image/avif" />
+                <img
+                  src="/avatar/talha.webp"
+                  alt="Portrait of Talha Arshad"
+                  width={1086}
+                  height={1448}
+                  decoding="async"
+                  loading="lazy"
+                  className="aspect-[3/4] w-full object-cover object-[center_18%]"
+                />
+              </picture>
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-5 pt-16 pb-5">
                 <p className="font-display text-2xl leading-tight font-semibold text-white sm:text-3xl">
                   Talha Arshad<span className="text-accent">.</span>

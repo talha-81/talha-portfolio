@@ -5,10 +5,7 @@ import { faqs } from "../data/content.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
 
 export function FaqPage() {
-  usePageMeta(
-    "FAQ — Talha Arshad",
-    "How to start a project, where Talha Arshad works, and what he can build. WhatsApp or Email. No contact form.",
-  );
+  usePageMeta();
 
   return (
     <>

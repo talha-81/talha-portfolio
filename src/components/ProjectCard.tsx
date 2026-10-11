@@ -61,16 +61,19 @@ export function ProjectCover({
   if (project.cover) {
     return (
       <div className="relative aspect-[16/9] overflow-hidden border-b border-line bg-soft">
-        <img
-          src={project.cover}
-          alt={project.coverAlt ?? ""}
-          width={640}
-          height={360}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
-          fetchPriority={priority ? "high" : "auto"}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-        />
+        <picture>
+          <source srcSet={project.cover.replace(/\.webp$/, ".avif")} type="image/avif" />
+          <img
+            src={project.cover}
+            alt={project.coverAlt ?? `${project.title} visual`}
+            width={640}
+            height={360}
+            loading={priority ? "eager" : "lazy"}
+            decoding={priority ? "sync" : "async"}
+            fetchPriority={priority ? "high" : "auto"}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+          />
+        </picture>
       </div>
     );
   }

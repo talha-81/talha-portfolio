@@ -69,10 +69,7 @@ function NeuralStage() {
 }
 
 export function AiPage() {
-  usePageMeta(
-    "AI — Talha Arshad",
-    "Chatbots, MCP tools, voice and call agents, lead generation, and WhatsApp automation, plus public computer-vision and machine-learning work.",
-  );
+  usePageMeta();
   const aiProjects = projectsInGroup("ai");
   const mlProjects = projectsInGroup("ml");
 

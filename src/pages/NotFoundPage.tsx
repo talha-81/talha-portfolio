@@ -6,10 +6,7 @@ import { secondaryBtn } from "../lib/styles.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
 
 export function NotFoundPage() {
-  usePageMeta(
-    "Page not found — Talha Arshad",
-    "That page is not on Talha Arshad's site. Head back to the work, services, or contact buttons.",
-  );
+  usePageMeta();
 
   return (
     <>

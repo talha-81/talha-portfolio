@@ -2,52 +2,15 @@
   command = "npm run build"
   publish = "dist"
 
-# SPA fallbacks. Netlify serves real files first, then these rules.
-# /sitemap.xml, /robots.txt, and /og-image.jpg stay real files in dist.
-# The splat is not forced, so it does not replace those files.
-
-[[redirects]]
-  from = "/about"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/services"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/projects"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/projects/*"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/ai"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/skills"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/contact"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/faq"
-  to = "/index.html"
-  status = 200
+# Prerendered routes are real files and are served first.
+# Unknown URLs get the static 404 page with a 404 status.
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
+  to = "/404.html"
+  status = 404
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
