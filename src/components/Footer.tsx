@@ -72,8 +72,8 @@ export function Footer() {
 
         <div className="mt-16 grid gap-10 rounded-[32px] border border-line bg-surface/80 p-6 shadow-[var(--shadow)] backdrop-blur-md sm:p-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="font-display text-sm font-bold tracking-[0.28em] text-fg">
-              TALHA<span className="text-accent">.</span>
+            <p className="font-display text-lg font-semibold tracking-tight text-fg">
+              Talha Arshad<span className="text-accent">.</span>
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Web applications, management systems, AI products, and automation. {availability}

@@ -48,8 +48,8 @@ export function AboutPage() {
                 className="aspect-[3/4] w-full object-cover object-[center_18%]"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-5 pt-16 pb-5">
-                <p className="font-display text-3xl font-semibold text-white">
-                  Talha<span className="text-accent">.</span>
+                <p className="font-display text-2xl leading-tight font-semibold text-white sm:text-3xl">
+                  Talha Arshad<span className="text-accent">.</span>
                 </p>
                 <p className="mt-1 text-xs font-semibold tracking-[0.18em] text-white/80 uppercase">Software Engineer</p>
               </div>
@@ -68,7 +68,7 @@ export function AboutPage() {
           <Reveal>
             <div className="max-w-2xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
               <p>
-                I&apos;m a software engineer with 5+ years of experience designing and developing scalable web applications and software solutions. The work covers full-stack development, backend APIs, databases, AI, and data-driven products.
+                I&apos;m Talha Arshad, a software engineer with 5+ years of experience designing and developing scalable web applications and software solutions. The work covers full-stack development, backend APIs, databases, AI, and data-driven products.
               </p>
               <p>I use React.js, .NET Core, SQL, and Python for interfaces, backend services, and AI features.</p>
               <p>I work remotely with clients anywhere in the world, across time zones, and I&apos;m available 24/7.</p>
