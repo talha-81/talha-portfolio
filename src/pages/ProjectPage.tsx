@@ -11,7 +11,7 @@ export function ProjectPage() {
   const project = projectBySlug(slug);
   usePageMeta(
     project ? `${project.title} — Talha Arshad` : "Project not found — Talha Arshad",
-    project?.summary ?? "That project is not on this site.",
+    project ? `${project.title}. ${project.summary}` : "That project is not on this site.",
   );
 
   if (!project) {

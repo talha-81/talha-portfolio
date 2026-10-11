@@ -1,11 +1,11 @@
 import { useReducedMotion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduce = useReducedMotion();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const node = ref.current;
     if (!node || reduce !== false) return;
 

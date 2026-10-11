@@ -57,6 +57,18 @@ export function ServicesPage() {
                       {service.title}
                     </h2>
                     <p className="mt-3 text-sm leading-relaxed text-muted">{service.text}</p>
+                    {index === 0 ? (
+                      <div className="mt-6 grid flex-1 grid-cols-3 content-end gap-2">
+                        {["React", "APIs", "Databases"].map((item) => (
+                          <p
+                            key={item}
+                            className="rounded-2xl border border-line bg-soft px-2 py-4 text-center text-xs font-semibold text-fg"
+                          >
+                            {item}
+                          </p>
+                        ))}
+                      </div>
+                    ) : null}
                   </SpotlightCard>
                 </Reveal>
               </li>
