@@ -1,6 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { publishedPosts } from "./read-blog.mjs";
 import { validateJsonLd } from "./validate-jsonld.mjs";
 
 const distDir = join(process.cwd(), "dist");
@@ -26,6 +27,8 @@ const routes = [
   ...slugs.map((slug) => `/projects/${slug}`),
   "/ai",
   "/skills",
+  "/blog",
+  ...publishedPosts().map((post) => `/blog/${post.slug}`),
   "/contact",
   "/faq",
   "/404",
@@ -36,6 +39,12 @@ function escapeText(value) {
 }
 
 function withHead(html, seo, canonical, jsonLd) {
+  const image = seo.image ?? "https://talha-ai.netlify.app/og-image.jpg";
+  const type = seo.type ?? "website";
+  const article = [
+    seo.published ? `<meta property="article:published_time" content="${seo.published}">` : "",
+    seo.modified ? `<meta property="article:modified_time" content="${seo.modified}">` : "",
+  ].join("");
   return html
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeText(seo.title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${escapeText(seo.description)}$2`)
@@ -43,9 +52,12 @@ function withHead(html, seo, canonical, jsonLd) {
     .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${escapeText(seo.title)}$2`)
     .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${escapeText(seo.description)}$2`)
     .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${canonical}$2`)
+    .replace(/(<meta property="og:type" content=")[^"]*(")/, `$1${type}$2`)
+    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${escapeText(image)}$2`)
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${escapeText(seo.title)}$2`)
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${escapeText(seo.description)}$2`)
-    .replace("</head>", `${preload}<script type="application/ld+json">${jsonLd}</script></head>`);
+    .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${escapeText(image)}$2`)
+    .replace("</head>", `${preload}${article}<script type="application/ld+json">${jsonLd}</script></head>`);
 }
 
 for (const route of routes) {

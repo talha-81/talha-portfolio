@@ -29,27 +29,32 @@ export function usePageMeta() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const { title, description } = pageSeo(pathname);
+    const seo = pageSeo(pathname);
     const url = canonicalUrl(pathname);
-    document.title = title;
-    upsertMeta("name", "description", description);
+    const image = seo.image ?? OG_IMAGE_URL;
+    document.title = seo.title;
+    upsertMeta("name", "description", seo.description);
     upsertCanonical(url);
-    upsertMeta("property", "og:title", title);
-    upsertMeta("property", "og:description", description);
+    upsertMeta("property", "og:title", seo.title);
+    upsertMeta("property", "og:description", seo.description);
     upsertMeta("property", "og:url", url);
-    upsertMeta("property", "og:image", OG_IMAGE_URL);
-    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:image", image);
+    upsertMeta("property", "og:type", seo.type ?? "website");
     upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", title);
-    upsertMeta("name", "twitter:description", description);
-    upsertMeta("name", "twitter:image", OG_IMAGE_URL);
+    upsertMeta("name", "twitter:title", seo.title);
+    upsertMeta("name", "twitter:description", seo.description);
+    upsertMeta("name", "twitter:image", image);
+    if (seo.published) upsertMeta("property", "article:published_time", seo.published);
+    else document.head.querySelector('meta[property="article:published_time"]')?.remove();
+    if (seo.modified) upsertMeta("property", "article:modified_time", seo.modified);
+    else document.head.querySelector('meta[property="article:modified_time"]')?.remove();
 
     const gtag = (window as Window & { gtag?: Gtag }).gtag;
     if (typeof gtag === "function") {
       gtag("event", "page_view", {
         page_path: pathname,
         page_location: url,
-        page_title: title,
+        page_title: seo.title,
       });
     }
   }, [pathname]);

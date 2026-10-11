@@ -7,6 +7,7 @@ export const sectionTips = {
   skills: "I use Claude, ChatGPT, Cursor, and Codex to move faster. I still review the code.",
   contact: "I'm available worldwide, remote, 24/7. WhatsApp or Email starts a project.",
   faq: "WhatsApp or Email is how you start a project with me. I'm available worldwide, remote, 24/7.",
+  blog: "Notes on AI agents, automation, and the processes I take on for clients.",
   missing: "That page isn't here. Head back to the work, or start a project.",
 } as const;
 
@@ -17,6 +18,7 @@ export const navTips: Record<string, string> = {
   "/projects": "Work you can open. Public repositories are linked from the project.",
   "/ai": "Chatbots, voice agents, MCP, and automation.",
   "/skills": "The technologies behind the projects.",
+  "/blog": "Notes on AI agents and automation.",
   "/contact": "Send a message, or use WhatsApp, Email, GitHub, or LinkedIn.",
   "/faq": "A few answers before you write.",
 };

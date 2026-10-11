@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Talha Arshad</title>
+    <link>https://talha-ai.netlify.app/blog</link>
+    <description>Notes on AI agents, automation, and remote software work by Talha Arshad.</description>
+    <item>
+      <title>10 Business Processes You Can Automate with AI Agents</title>
+      <link>https://talha-ai.netlify.app/blog/10-business-processes-automate-ai-agents</link>
+      <guid>https://talha-ai.netlify.app/blog/10-business-processes-automate-ai-agents</guid>
+      <pubDate>Sun, 11 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Ten business processes you can automate with AI agents: example workflows, tools, where humans stay in the loop, and guardrails.</description>
+    </item>
+  </channel>
+</rss>
