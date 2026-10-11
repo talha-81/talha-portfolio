@@ -11,6 +11,7 @@ import { SectionHeading } from "../components/SectionHeading.tsx";
 import { ServiceMark } from "../components/ServiceMark.tsx";
 import { SpotlightCard } from "../components/SpotlightCard.tsx";
 import { StatsRow } from "../components/StatsRow.tsx";
+import { WhatsAppChoice } from "../components/WhatsAppChoice.tsx";
 import { aiWorkflowLine, availability, services } from "../data/content.ts";
 import { homeProjects } from "../data/projects.ts";
 import { primaryBtn, secondaryBtn } from "../lib/styles.ts";
@@ -76,10 +77,10 @@ export function HomePage() {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact" className={primaryBtn}>
+              <WhatsAppChoice className={primaryBtn}>
                 Start a project
                 <ArrowUpRight size={18} />
-              </Link>
+              </WhatsAppChoice>
               <Link to="/projects" className={secondaryBtn}>
                 View projects
               </Link>
