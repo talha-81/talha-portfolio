@@ -93,7 +93,7 @@ export const processSteps = [
 export const faqs = [
   {
     q: "How do I start a project?",
-    a: "Use the WhatsApp or Email button on the contact page. GitHub and LinkedIn are there too. There is no contact form.",
+    a: "Use the form on the contact page, or the WhatsApp or Email button. GitHub and LinkedIn are there too.",
   },
   {
     q: "Where do you work?",

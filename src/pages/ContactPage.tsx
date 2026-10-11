@@ -1,4 +1,5 @@
 import { ContactButtons } from "../components/ContactButtons.tsx";
+import { ContactForm } from "../components/ContactForm.tsx";
 import { PageCta } from "../components/PageCta.tsx";
 import { availability } from "../data/content.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
@@ -6,7 +7,7 @@ import { usePageMeta } from "../lib/usePageMeta.ts";
 export function ContactPage() {
   usePageMeta(
     "Contact — Talha Arshad",
-    "Start a project with Talha Arshad on WhatsApp or Email. GitHub and LinkedIn are there too. No contact form. Available worldwide, remote, 24/7.",
+    "Send Talha Arshad a project note, or reach him on WhatsApp, Email, GitHub, or LinkedIn. Available worldwide, remote, 24/7.",
   );
 
   return (
@@ -27,15 +28,35 @@ export function ContactPage() {
             </span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            I work remotely with clients anywhere in the world, across time zones. WhatsApp opens a chat with a short project note. Email, GitHub, and LinkedIn are here as well. There is no contact form.
+            Send a message and I&apos;ll get back to you. WhatsApp, Email, GitHub, and LinkedIn are here as well. I work remotely, worldwide, 24/7.
           </p>
           <ContactButtons size="lg" className="mt-10" />
         </div>
       </section>
 
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="hero-grid pointer-events-none absolute inset-0 opacity-70" />
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/15 blur-3xl" />
+        <div className="relative mx-auto grid max-w-6xl items-start gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.6fr)] md:py-24">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.22em] text-accent uppercase">Message</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">Contact Talha Arshad</h2>
+            <p className="mt-3 max-w-xl text-muted">Tell me about the project. I&apos;ll reply from the email you leave.</p>
+            <div className="mt-8">
+              <ContactForm />
+            </div>
+          </div>
+          <aside className="rounded-[32px] border border-line bg-surface/80 p-6 shadow-[var(--shadow)] lg:sticky lg:top-28">
+            <h2 className="font-display text-2xl font-semibold text-fg">Or reach me directly</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted">WhatsApp, Email, GitHub, and LinkedIn stay open if you&apos;d rather not use the form.</p>
+            <ContactButtons className="mt-6" />
+          </aside>
+        </div>
+      </section>
+
       <section className="mx-auto grid max-w-6xl gap-4 px-5 py-16 sm:px-8 md:grid-cols-3 md:py-24">
         {[
-          { title: "Send a note", text: "Use WhatsApp or Email. Say what you want built." },
+          { title: "Send a note", text: "Use the form, WhatsApp, or Email. Say what you want built." },
           { title: "Shape the work", text: "We line up the outcome, the interface, and where an agent or automation fits." },
           { title: "Build remote", text: "I deliver across time zones and stay available 24/7 for client work." },
         ].map((item, index) => (
