@@ -19,10 +19,7 @@ import { primaryBtn, secondaryBtn } from "../lib/styles.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
 
 export function HomePage() {
-  usePageMeta(
-    "Talha Arshad — Software Engineer",
-    "Talha Arshad is a software engineer in Pakistan. He builds web applications, management systems, AI products, and automation for clients worldwide. Available remotely, 24/7.",
-  );
+  usePageMeta();
   const reduce = useReducedMotion();
   const constraintsRef = useRef<HTMLDivElement>(null);
   const teaser = services.slice(0, 3);
@@ -43,7 +40,7 @@ export function HomePage() {
           <div>
             <motion.p
               className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 px-3 py-1.5 text-xs font-semibold tracking-[0.14em] text-fg uppercase"
-              initial={reduce ? false : { opacity: 0, y: 12 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
             >
@@ -53,7 +50,7 @@ export function HomePage() {
 
             <motion.h1
               className="mt-6 font-display text-[clamp(3rem,8vw,6.2rem)] leading-[0.88] font-bold tracking-tighter text-fg"
-              initial={reduce ? false : { opacity: 0, y: 18 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.05 }}
             >
@@ -66,7 +63,7 @@ export function HomePage() {
 
             <motion.p
               className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
-              initial={reduce ? false : { opacity: 0, y: 18 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
             >

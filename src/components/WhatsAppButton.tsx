@@ -1,9 +1,13 @@
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { WhatsAppIcon } from "./BrandIcons.tsx";
 import { contactTips } from "../data/mascotTips.ts";
+import { WhatsAppIcon } from "./BrandIcons.tsx";
 import { WhatsAppChoice } from "./WhatsAppChoice.tsx";
 
 export function WhatsAppButton() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
   return createPortal(
     <WhatsAppChoice
       prefer="above"

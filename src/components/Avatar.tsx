@@ -4,15 +4,19 @@
  */
 export function Avatar() {
   return (
-    <img
-      src="/avatar/talha.webp"
-      alt="Talha Arshad"
-      width={1086}
-      height={1448}
-      decoding="async"
-      fetchPriority="high"
-      draggable={false}
-      className="absolute inset-0 h-full w-full object-cover object-center"
-    />
+    <picture className="absolute inset-0">
+      <source srcSet="/avatar/talha.avif" type="image/avif" />
+      <img
+        src="/avatar/talha.webp"
+        alt="Talha Arshad, software engineer"
+        width={1086}
+        height={1448}
+        decoding="sync"
+        fetchPriority="high"
+        loading="eager"
+        draggable={false}
+        className="h-full w-full object-cover object-center"
+      />
+    </picture>
   );
 }

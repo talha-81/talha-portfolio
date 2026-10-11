@@ -1,0 +1,12 @@
+{
+  "name": "Talha Arshad",
+  "short_name": "Talha Arshad",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d1116",
+  "theme_color": "#0d1116",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -77,10 +77,7 @@ function OrbitCloud() {
 }
 
 export function SkillsPage() {
-  usePageMeta(
-    "Skills — Talha Arshad",
-    "Frontend, backend, AI agents, computer vision, data, and delivery tools used in Talha Arshad's projects. No proficiency scores.",
-  );
+  usePageMeta();
   const names = skillGroups.flatMap((group) => [...group.skills]);
   const rowA = names.filter((_, index) => index % 2 === 0);
   const rowB = names.filter((_, index) => index % 2 === 1);

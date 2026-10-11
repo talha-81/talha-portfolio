@@ -4,10 +4,7 @@ import { availability } from "../data/content.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
 
 export function ContactPage() {
-  usePageMeta(
-    "Contact — Talha Arshad",
-    "Send Talha Arshad a project note, or reach him on WhatsApp, Email, GitHub, or LinkedIn. Available worldwide, remote, 24/7.",
-  );
+  usePageMeta();
 
   return (
     <>

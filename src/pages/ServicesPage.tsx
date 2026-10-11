@@ -20,10 +20,7 @@ const spans = [
 ];
 
 export function ServicesPage() {
-  usePageMeta(
-    "Services — Talha Arshad",
-    "Web applications, management systems, AI chatbots, voice agents, computer vision, machine learning, APIs, and automation. Remote, worldwide, 24/7.",
-  );
+  usePageMeta();
 
   return (
     <>

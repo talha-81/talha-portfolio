@@ -9,10 +9,7 @@ import { usePageMeta } from "../lib/usePageMeta.ts";
 export function ProjectPage() {
   const { slug } = useParams();
   const project = projectBySlug(slug);
-  usePageMeta(
-    project ? `${project.title} — Talha Arshad` : "Project not found — Talha Arshad",
-    project ? `${project.title}. ${project.summary}` : "That project is not on this site.",
-  );
+  usePageMeta();
 
   if (!project) {
     return (
@@ -57,6 +54,17 @@ export function ProjectPage() {
         <div className="min-w-0">
           <h2 className="font-display text-3xl font-semibold tracking-tight text-fg">About this project</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">{project.description}</p>
+          <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+            <Link to="/services" className="text-accent">
+              See services for this kind of work
+            </Link>
+            <Link to="/skills" className="text-accent">
+              See the skills behind this build
+            </Link>
+            <Link to="/projects" className="text-accent">
+              Browse all projects
+            </Link>
+          </p>
           {project.note ? <p className="mt-4 text-sm text-muted">{project.note}</p> : null}
         </div>
         <aside className="gradient-ring h-fit rounded-[28px] p-6">

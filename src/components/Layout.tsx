@@ -1,26 +1,39 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect, type ComponentType } from "react";
 import { Route, Routes, useLocation } from "react-router";
 import { EASE } from "../lib/motion.ts";
 import { scrollToContactFormWhenReady } from "../lib/scrollToContactForm.ts";
-import { AboutPage } from "../pages/AboutPage.tsx";
-import { AiPage } from "../pages/AiPage.tsx";
-import { ContactPage } from "../pages/ContactPage.tsx";
-import { FaqPage } from "../pages/FaqPage.tsx";
-import { HomePage } from "../pages/HomePage.tsx";
-import { NotFoundPage } from "../pages/NotFoundPage.tsx";
-import { ProjectPage } from "../pages/ProjectPage.tsx";
-import { ProjectsPage } from "../pages/ProjectsPage.tsx";
-import { ServicesPage } from "../pages/ServicesPage.tsx";
-import { SkillsPage } from "../pages/SkillsPage.tsx";
 import { Footer } from "./Footer.tsx";
-import { Navbar } from "./Navbar.tsx";
-import { WhatsAppButton } from "./WhatsAppButton.tsx";
 import { Mascot } from "./Mascot.tsx";
+import { Navbar } from "./Navbar.tsx";
+import { useStructuredData } from "./StructuredData.tsx";
+import { WhatsAppButton } from "./WhatsAppButton.tsx";
+
+function load<T extends Record<string, ComponentType>>(importer: () => Promise<T>, name: keyof T & string) {
+  return lazy(() => importer().then((module) => ({ default: module[name] })));
+}
+
+const HomePage = load(() => import("../pages/HomePage.tsx"), "HomePage");
+const AboutPage = load(() => import("../pages/AboutPage.tsx"), "AboutPage");
+const ServicesPage = load(() => import("../pages/ServicesPage.tsx"), "ServicesPage");
+const ProjectsPage = load(() => import("../pages/ProjectsPage.tsx"), "ProjectsPage");
+const ProjectPage = load(() => import("../pages/ProjectPage.tsx"), "ProjectPage");
+const AiPage = load(() => import("../pages/AiPage.tsx"), "AiPage");
+const SkillsPage = load(() => import("../pages/SkillsPage.tsx"), "SkillsPage");
+const ContactPage = load(() => import("../pages/ContactPage.tsx"), "ContactPage");
+const FaqPage = load(() => import("../pages/FaqPage.tsx"), "FaqPage");
+const NotFoundPage = load(() => import("../pages/NotFoundPage.tsx"), "NotFoundPage");
+
+let allowRouteMotion = false;
 
 export function Layout() {
   const location = useLocation();
   const reduce = useReducedMotion();
+  useStructuredData();
+
+  useEffect(() => {
+    allowRouteMotion = true;
+  }, []);
 
   useEffect(() => {
     if (location.hash === "#contact-form") {
@@ -39,11 +52,12 @@ export function Layout() {
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={reduce ? false : { opacity: 0, y: 14 }}
+            initial={allowRouteMotion && !reduce ? { opacity: 0, y: 14 } : false}
             animate={{ opacity: 1, y: 0 }}
-            exit={reduce ? undefined : { opacity: 0, y: -10 }}
+            exit={allowRouteMotion && !reduce ? { opacity: 0, y: -10 } : undefined}
             transition={{ duration: 0.35, ease: EASE }}
           >
+            <Suspense fallback={null}>
             <Routes location={location}>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
@@ -56,6 +70,7 @@ export function Layout() {
               <Route path="/faq" element={<FaqPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
+            </Suspense>
           </motion.div>
         </AnimatePresence>
       </main>
