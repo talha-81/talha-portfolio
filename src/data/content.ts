@@ -7,11 +7,11 @@ export const profile = {
   repos: "https://github.com/talha-81?tab=repositories",
 } as const;
 
-export const whatsappNumber = "+92 340 0957785";
-
 const whatsappMessage = "Hi Talha, I'd like to discuss a project.";
 
 export const whatsappHref = `https://wa.me/923400957785?text=${encodeURIComponent(whatsappMessage)}`;
+
+export const emailHref = "mailto:tarshad587@gmail.com";
 
 export const availability = "Available worldwide, remote, 24/7.";
 
@@ -22,10 +22,16 @@ export const aiTools = ["Claude", "ChatGPT", "Cursor", "Codex"] as const;
 export const navLinks = [
   { href: "/", label: "Home", end: true },
   { href: "/about", label: "About", end: false },
+  { href: "/services", label: "Services", end: false },
   { href: "/projects", label: "Projects", end: false },
   { href: "/ai", label: "AI", end: false },
   { href: "/skills", label: "Skills", end: false },
   { href: "/contact", label: "Contact", end: false },
+] as const;
+
+export const footerLinks = [
+  ...navLinks,
+  { href: "/faq", label: "FAQ", end: false },
 ] as const;
 
 export const services = [
@@ -84,7 +90,7 @@ export const processSteps = [
 export const faqs = [
   {
     q: "How do I start a project?",
-    a: "Send a WhatsApp message. GitHub and LinkedIn are on the contact page as well. This site has no email form.",
+    a: "Use the WhatsApp or Email button on the contact page. GitHub and LinkedIn are there too. There is no contact form.",
   },
   {
     q: "Where do you work?",
@@ -93,10 +99,6 @@ export const faqs = [
   {
     q: "What can you build?",
     a: "Web applications, management systems, AI chatbots and call agents, computer vision, machine learning, APIs, and automation.",
-  },
-  {
-    q: "Are the projects public?",
-    a: "Public repositories are linked from the project page. Client systems are described here without a repository link.",
   },
 ] as const;
 

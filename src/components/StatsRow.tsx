@@ -1,4 +1,5 @@
 import { stats } from "../data/stats.ts";
+import { CountUp } from "./CountUp.tsx";
 
 type Stat = {
   value: string;
@@ -21,7 +22,7 @@ export function StatsRow({ className = "" }: { className?: string }) {
         <div key={item.label} className="bg-surface px-5 py-5 sm:px-6">
           <dt className="text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">{item.label}</dt>
           <dd className="mt-2 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
-            {item.value}
+            <CountUp value={item.value} />
           </dd>
         </div>
       ))}

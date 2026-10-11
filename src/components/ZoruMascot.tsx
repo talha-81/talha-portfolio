@@ -13,7 +13,9 @@ const TIPS = {
   projects: "Web systems, AI products, and machine-learning work. Open a card for the details.",
   ai: "Chatbots, MCP tools, voice agents, and automation, built for client products.",
   skills: "Claude, ChatGPT, Cursor, and Codex speed up delivery. The engineering still gets a review.",
-  contact: "Available worldwide, remote, 24/7. WhatsApp is the direct way to start a project.",
+  services: "Web systems, chatbots, voice agents, vision, and automation. Tell me which one you need.",
+  contact: "Available worldwide, remote, 24/7. Use WhatsApp or Email to start a project.",
+  faq: "WhatsApp or Email starts a project. Available worldwide, remote, 24/7.",
 } as const;
 
 function tipFor(pathname: string) {
@@ -25,7 +27,9 @@ function tipFor(pathname: string) {
   if (pathname === "/projects") return TIPS.projects;
   if (pathname === "/ai") return TIPS.ai;
   if (pathname === "/skills") return TIPS.skills;
+  if (pathname === "/services") return TIPS.services;
   if (pathname === "/contact") return TIPS.contact;
+  if (pathname === "/faq") return TIPS.faq;
   return TIPS.home;
 }
 

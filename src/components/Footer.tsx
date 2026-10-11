@@ -1,22 +1,8 @@
 import { Link } from "react-router";
-import {
-  aiWorkflowLine,
-  availability,
-  navLinks,
-  profile,
-  serviceAreas,
-  whatsappHref,
-  whatsappNumber,
-} from "../data/content.ts";
-import { celebrateZoru } from "../lib/mascot.ts";
+import { aiWorkflowLine, availability, footerLinks, profile, serviceAreas } from "../data/content.ts";
+import { ContactButtons } from "./ContactButtons.tsx";
 
 const year = 2026;
-
-const socials = [
-  { label: "WhatsApp", href: whatsappHref, detail: whatsappNumber },
-  { label: "GitHub", href: profile.github, detail: "github.com/talha-81" },
-  { label: "LinkedIn", href: profile.linkedin, detail: "talha-arshad81" },
-];
 
 export function Footer() {
   return (
@@ -40,11 +26,11 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 lg:col-span-6">
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-6">
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Menu</p>
               <ul className="mt-4 space-y-3">
-                {navLinks.map((link) => (
+                {footerLinks.map((link) => (
                   <li key={link.href}>
                     <Link to={link.href} className="text-sm font-medium text-fg hover:text-accent">
                       {link.label}
@@ -55,22 +41,7 @@ export function Footer() {
             </div>
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Contact</p>
-              <ul className="mt-4 space-y-3">
-                {socials.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      onClick={() => celebrateZoru()}
-                      className="text-sm font-medium text-fg hover:text-accent"
-                    >
-                      {item.label}
-                      <span className="mt-0.5 block text-xs font-normal text-muted">{item.detail}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <ContactButtons className="mt-4" />
             </div>
           </div>
         </div>

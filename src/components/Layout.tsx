@@ -5,10 +5,12 @@ import { EASE } from "../lib/motion.ts";
 import { AboutPage } from "../pages/AboutPage.tsx";
 import { AiPage } from "../pages/AiPage.tsx";
 import { ContactPage } from "../pages/ContactPage.tsx";
+import { FaqPage } from "../pages/FaqPage.tsx";
 import { HomePage } from "../pages/HomePage.tsx";
 import { NotFoundPage } from "../pages/NotFoundPage.tsx";
 import { ProjectPage } from "../pages/ProjectPage.tsx";
 import { ProjectsPage } from "../pages/ProjectsPage.tsx";
+import { ServicesPage } from "../pages/ServicesPage.tsx";
 import { SkillsPage } from "../pages/SkillsPage.tsx";
 import { Footer } from "./Footer.tsx";
 import { Navbar } from "./Navbar.tsx";
@@ -41,11 +43,13 @@ export function Layout() {
             <Routes location={location}>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/projects/:slug" element={<ProjectPage />} />
               <Route path="/ai" element={<AiPage />} />
               <Route path="/skills" element={<SkillsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/faq" element={<FaqPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </motion.div>

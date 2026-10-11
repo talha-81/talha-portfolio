@@ -141,3 +141,132 @@ body,
   background: color-mix(in srgb, var(--fg) 22%, transparent);
   border-radius: 999px;
 }
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+
+.marquee-track-reverse {
+  animation: marquee 42s linear infinite reverse;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float-slow {
+  animation: float-y 5.5s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 7s ease-in-out infinite;
+}
+
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 20%),
+    var(--glow),
+    transparent 42%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.spotlight:hover::before,
+.spotlight:focus-within::before {
+  opacity: 1;
+}
+
+.spotlight > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-ring {
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(140deg, var(--accent), transparent 38%, color-mix(in srgb, var(--accent) 55%, transparent))
+      border-box;
+  border: 1px solid transparent;
+}
+
+.ai-field {
+  background-image:
+    radial-gradient(circle at 18% 30%, var(--glow), transparent 26%),
+    radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 24%),
+    radial-gradient(circle at 60% 80%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 28%),
+    radial-gradient(var(--grid) 1.2px, transparent 1.2px);
+  background-size: auto, auto, auto, 22px 22px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-spin {
+  animation: spin 36s linear infinite;
+}
+
+.orbit-spin-rev {
+  animation: spin 48s linear infinite reverse;
+}
+
+.counter-spin {
+  animation: spin 36s linear infinite reverse;
+}
+
+.counter-spin-rev {
+  animation: spin 48s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-track-reverse,
+  .float-slow,
+  .glow-pulse,
+  .orbit-spin,
+  .orbit-spin-rev,
+  .counter-spin,
+  .counter-spin-rev {
+    animation: none;
+  }
+}

@@ -1,92 +1,53 @@
-import { ArrowUpRight } from "lucide-react";
-import { FaqList } from "../components/FaqList.tsx";
-import { GitHubIcon, LinkedInIcon } from "../components/BrandIcons.tsx";
-import {
-  availability,
-  profile,
-  whatsappHref,
-  whatsappNumber,
-} from "../data/content.ts";
-import { celebrateZoru } from "../lib/mascot.ts";
-import { secondaryBtn } from "../lib/styles.ts";
-import { useDocumentTitle } from "../lib/useDocumentTitle.ts";
+import { ContactButtons } from "../components/ContactButtons.tsx";
+import { PageCta } from "../components/PageCta.tsx";
+import { availability } from "../data/content.ts";
+import { usePageMeta } from "../lib/usePageMeta.ts";
 
 export function ContactPage() {
-  useDocumentTitle("Contact — Talha Arshad");
+  usePageMeta(
+    "Contact — Talha Arshad",
+    "Start a project with Talha Arshad on WhatsApp or Email. GitHub and LinkedIn are there too. No contact form. Available worldwide, remote, 24/7.",
+  );
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
-      <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-semibold tracking-[0.14em] text-fg uppercase">
-        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-        {availability}
-      </p>
-      <h1 className="mt-6 max-w-4xl font-display text-[clamp(3rem,7vw,5.6rem)] leading-[0.9] font-bold tracking-tighter text-fg">
-        Start a <span className="text-stroke">project</span>
-        <span className="text-accent">.</span>
-      </h1>
-      <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-        I work remotely with clients anywhere in the world, across time zones, and I am available 24/7. WhatsApp is the direct way to reach me. GitHub and LinkedIn are here as well.
-      </p>
-
-      <div className="mt-10 grid gap-4 lg:grid-cols-3">
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noreferrer noopener"
-          onClick={() => celebrateZoru()}
-          className="rounded-[28px] border border-accent bg-accent p-6 text-accent-ink transition hover:-translate-y-1 lg:col-span-1"
-        >
-          <p className="text-xs font-semibold tracking-[0.18em] uppercase">Primary</p>
-          <p className="mt-3 font-display text-3xl font-semibold tracking-tight">WhatsApp</p>
-          <p className="mt-2 text-lg font-medium">{whatsappNumber}</p>
-          <p className="mt-3 text-sm leading-relaxed">
-            Opens a chat with a short note: &quot;Hi Talha, I&apos;d like to discuss a project.&quot;
+    <>
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="hero-grid pointer-events-none absolute inset-0" />
+        <div className="glow-pulse pointer-events-none absolute top-1/2 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
+          <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 px-3 py-1.5 text-xs font-semibold tracking-[0.14em] text-fg uppercase">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--accent)]" />
+            {availability}
           </p>
-          <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
-            Start a project
-            <ArrowUpRight size={16} />
-          </span>
-        </a>
-
-        <a
-          href={profile.github}
-          target="_blank"
-          rel="noreferrer noopener"
-          onClick={() => celebrateZoru()}
-          className="rounded-[28px] border border-line bg-surface p-6 transition hover:-translate-y-1 hover:border-accent"
-        >
-          <GitHubIcon className="h-6 w-6" />
-          <p className="mt-4 font-display text-2xl font-semibold text-fg">GitHub</p>
-          <p className="mt-2 text-sm text-muted">github.com/talha-81</p>
-          <span className={`${secondaryBtn} mt-6`}>
-            Open GitHub
-            <ArrowUpRight size={16} />
-          </span>
-        </a>
-
-        <a
-          href={profile.linkedin}
-          target="_blank"
-          rel="noreferrer noopener"
-          onClick={() => celebrateZoru()}
-          className="rounded-[28px] border border-line bg-surface p-6 transition hover:-translate-y-1 hover:border-accent"
-        >
-          <LinkedInIcon className="h-6 w-6" />
-          <p className="mt-4 font-display text-2xl font-semibold text-fg">LinkedIn</p>
-          <p className="mt-2 text-sm text-muted">talha-arshad81</p>
-          <span className={`${secondaryBtn} mt-6`}>
-            Open LinkedIn
-            <ArrowUpRight size={16} />
-          </span>
-        </a>
-      </div>
-
-      <section className="mt-16 max-w-3xl">
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-fg">Questions</h2>
-        <div className="mt-6">
-          <FaqList />
+          <h1 className="mt-6 max-w-4xl font-display text-[clamp(3.2rem,9vw,7rem)] leading-[0.86] font-bold tracking-tighter text-fg">
+            LET&apos;S
+            <span className="block">
+              <span className="text-stroke">BUILD</span>
+              <span className="text-accent">.</span>
+            </span>
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+            I work remotely with clients anywhere in the world, across time zones. WhatsApp opens a chat with a short project note. Email, GitHub, and LinkedIn are here as well. There is no contact form.
+          </p>
+          <ContactButtons size="lg" className="mt-10" />
         </div>
       </section>
-    </div>
+
+      <section className="mx-auto grid max-w-6xl gap-4 px-5 py-16 sm:px-8 md:grid-cols-3 md:py-24">
+        {[
+          { title: "Send a note", text: "Use WhatsApp or Email. Say what you want built." },
+          { title: "Shape the work", text: "We line up the outcome, the interface, and where an agent or automation fits." },
+          { title: "Build remote", text: "I deliver across time zones and stay available 24/7 for client work." },
+        ].map((item, index) => (
+          <article key={item.title} className="gradient-ring rounded-[28px] p-6">
+            <p className="font-display text-sm font-semibold text-accent">{String(index + 1).padStart(2, "0")}</p>
+            <h2 className="mt-3 font-display text-2xl font-semibold text-fg">{item.title}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>
+          </article>
+        ))}
+      </section>
+
+      <PageCta title="Ready when you are." />
+    </>
   );
 }
