@@ -2,7 +2,7 @@ import { useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } f
 import { createPortal } from "react-dom";
 import { useLocation } from "react-router";
 import { whatsappHref, whatsappNumber } from "../data/content.ts";
-import { celebrateZoru } from "../lib/mascot.ts";
+import { celebrateMascot } from "../lib/mascot.ts";
 import { WhatsAppIcon } from "./BrandIcons.tsx";
 
 const OPEN_EVENT = "wa-choice-open";
@@ -12,6 +12,7 @@ type WhatsAppChoiceProps = {
   children: ReactNode | ((state: { open: boolean }) => ReactNode);
   ariaLabel?: string;
   prefer?: "above" | "below";
+  tip?: string;
 };
 
 export function WhatsAppChoice({
@@ -19,6 +20,7 @@ export function WhatsAppChoice({
   children,
   ariaLabel,
   prefer = "below",
+  tip,
 }: WhatsAppChoiceProps) {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
@@ -65,15 +67,15 @@ export function WhatsAppChoice({
       const openAbove = prefer === "above" || (spaceBelow < height + 12 && spaceAbove > spaceBelow);
       const top = openAbove ? rect.top - height - 8 : rect.bottom + 8;
 
-      const zoru = document.querySelector("[data-mascot='zoru']");
-      if (zoru) {
-        const zoruBox = zoru.getBoundingClientRect();
+      const mascot = document.querySelector("[data-mascot='mascot']");
+      if (mascot) {
+        const mascotBox = mascot.getBoundingClientRect();
         const overlaps =
-          left < zoruBox.right &&
-          left + width > zoruBox.left &&
-          top < zoruBox.bottom &&
-          top + height > zoruBox.top;
-        if (overlaps) left = Math.max(8, zoruBox.left - width - 12);
+          left < mascotBox.right &&
+          left + width > mascotBox.left &&
+          top < mascotBox.bottom &&
+          top + height > mascotBox.top;
+        if (overlaps) left = Math.max(8, mascotBox.left - width - 12);
       }
 
       menu.style.left = `${left}px`;
@@ -142,7 +144,7 @@ export function WhatsAppChoice({
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
   function openChat() {
-    celebrateZoru();
+    celebrateMascot();
     setOpen(false);
     window.open(whatsappHref, "_blank", "noopener,noreferrer");
   }
@@ -175,7 +177,7 @@ export function WhatsAppChoice({
   }
 
   function copyNumber() {
-    celebrateZoru();
+    celebrateMascot();
     if (navigator.clipboard?.writeText) {
       void navigator.clipboard.writeText(whatsappNumber).then(
         () => showCopied(true),
@@ -203,6 +205,7 @@ export function WhatsAppChoice({
           <p className="px-2 pt-1 pb-2 font-display text-xl font-semibold tracking-tight text-accent">{whatsappNumber}</p>
           <button
             type="button"
+            data-mascot-tip="Opens a WhatsApp chat with a short project note."
             onClick={openChat}
             className="flex min-h-11 w-full items-center gap-2 rounded-xl px-3 text-left text-sm font-semibold text-fg hover:bg-soft"
           >
@@ -212,6 +215,7 @@ export function WhatsAppChoice({
           <button
             type="button"
             data-copy=""
+            data-mascot-tip="Copies the number shown here."
             onClick={copyNumber}
             className="flex min-h-11 w-full items-center rounded-xl px-3 text-left text-sm font-semibold text-fg hover:bg-soft"
           >
@@ -241,6 +245,7 @@ export function WhatsAppChoice({
         type="button"
         className={className}
         aria-label={ariaLabel}
+        data-mascot-tip={tip}
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={open ? menuId : undefined}

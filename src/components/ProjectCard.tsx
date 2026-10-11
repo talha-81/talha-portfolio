@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import type { MouseEvent } from "react";
 import { Link } from "react-router";
+import { projectTip } from "../data/mascotTips.ts";
 import { groupById, type Project } from "../data/projects.ts";
 import { ProjectArt } from "./ProjectArt.tsx";
 
@@ -29,6 +30,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <article className="h-full">
       <Link
         to={`/projects/${project.slug}`}
+        data-mascot-tip={projectTip(project.summary)}
         onMouseMove={onSpotlight}
         className="spotlight group flex h-full flex-col overflow-hidden rounded-[28px] border border-line bg-surface shadow-[var(--shadow)] transition duration-300 hover:-translate-y-1 hover:border-accent/50"
       >

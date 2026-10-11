@@ -5,6 +5,7 @@ import { PageCta } from "../components/PageCta.tsx";
 import { PageHero } from "../components/PageHero.tsx";
 import { SpotlightCard } from "../components/SpotlightCard.tsx";
 import { aiTools, aiWorkflowLine, availability, skillGroups } from "../data/content.ts";
+import { skillTip } from "../data/mascotTips.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
 
 const inner = ["React", "TypeScript", "Python", "FastAPI", ".NET", "SQL"];
@@ -117,13 +118,15 @@ export function SkillsPage() {
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
         <div className="grid gap-5 md:grid-cols-2">
           {skillGroups.map((group) => (
-            <SpotlightCard key={group.title} className="p-6 sm:p-8">
+            <SpotlightCard key={group.title} className="p-6 sm:p-8" tip={`The ${group.title.toLowerCase()} tools I work with.`}>
               <h2 className="font-display text-2xl font-semibold tracking-tight text-fg">{group.title}</h2>
               <ul className="mt-5 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <li
                     key={skill}
-                    className="rounded-full border border-line bg-soft px-3 py-1.5 text-sm text-fg transition hover:border-accent hover:text-accent"
+                    tabIndex={0}
+                    data-mascot-tip={skillTip(skill)}
+                    className="rounded-full border border-line bg-soft px-3 py-1.5 text-sm text-fg outline-none transition hover:border-accent hover:text-accent focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     {skill}
                   </li>

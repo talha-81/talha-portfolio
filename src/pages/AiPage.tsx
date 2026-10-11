@@ -98,7 +98,7 @@ export function AiPage() {
         visual={<NeuralStage />}
       >
         <AiToolChips />
-        <Link to="/skills" className={`${secondaryBtn} mt-6`}>
+          <Link to="/skills" data-mascot-tip="See the technologies behind this work." className={`${secondaryBtn} mt-6`}>
           Skills
         </Link>
       </PageHero>
@@ -107,7 +107,7 @@ export function AiPage() {
         <ul className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {lanes.map((lane) => (
             <li key={lane.title}>
-              <SpotlightCard className="h-full p-6">
+              <SpotlightCard className="h-full p-6" tip={`I take this on. ${lane.text}`}>
                 <h2 className="font-display text-2xl font-semibold tracking-tight text-fg">{lane.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{lane.text}</p>
               </SpotlightCard>
@@ -142,7 +142,7 @@ export function AiPage() {
               Public computer-vision and machine-learning work: OpenCV detection, Keras and TensorFlow image models, and classical ML notebooks.
             </p>
           </div>
-          <Link to="/projects" className={`${secondaryBtn} w-fit`}>
+          <Link to="/projects" data-mascot-tip="Open the full project list." className={`${secondaryBtn} w-fit`}>
             All projects
           </Link>
         </div>

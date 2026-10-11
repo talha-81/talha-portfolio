@@ -10,6 +10,7 @@ export function ThemeToggle() {
     <button
       type="button"
       className="grid h-11 w-11 place-items-center rounded-full border border-line bg-soft text-fg transition hover:border-accent hover:text-accent"
+      data-mascot-tip="Switch between light and dark mode."
       aria-label={next === "light" ? "Switch to light theme" : "Switch to dark theme"}
       aria-pressed={theme === "light"}
       onClick={() => saveTheme(next)}

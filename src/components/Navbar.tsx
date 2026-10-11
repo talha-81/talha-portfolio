@@ -2,6 +2,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { navLinks } from "../data/content.ts";
+import { navTips, startProjectTip } from "../data/mascotTips.ts";
 import { ThemeToggle } from "./ThemeToggle.tsx";
 import { WhatsAppChoice } from "./WhatsAppChoice.tsx";
 
@@ -34,7 +35,7 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-header backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 sm:px-8 md:h-20">
-        <Link to="/" className="shrink-0 font-display text-sm font-bold tracking-[0.2em] text-fg xl:text-base xl:tracking-[0.28em]">
+        <Link to="/" data-mascot-tip="Takes you back home." className="shrink-0 font-display text-sm font-bold tracking-[0.2em] text-fg xl:text-base xl:tracking-[0.28em]">
           TALHA
           <span className="text-accent">.</span>
         </Link>
@@ -45,6 +46,7 @@ export function Navbar() {
               key={link.href}
               to={link.href}
               end={link.end}
+              data-mascot-tip={navTips[link.href]}
               className={({ isActive }) =>
                 `relative py-1 text-[11px] font-semibold tracking-[0.12em] whitespace-nowrap uppercase transition-colors hover:text-accent xl:text-xs xl:tracking-[0.14em] ${
                   isActive ? "text-accent" : "text-muted"
@@ -67,6 +69,7 @@ export function Navbar() {
           <ThemeToggle />
           <WhatsAppChoice
             prefer="below"
+            tip={startProjectTip}
             className="hidden min-h-11 items-center rounded-full bg-accent px-3 text-xs font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:inline-flex xl:px-4 xl:text-sm"
           >
             <span className="xl:hidden">Start</span>
@@ -75,6 +78,7 @@ export function Navbar() {
           <button
             type="button"
             className="grid h-11 w-11 place-items-center rounded-full border border-line text-fg lg:hidden"
+            data-mascot-tip="Opens the page menu."
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((value) => !value)}
@@ -96,6 +100,7 @@ export function Navbar() {
                 key={link.href}
                 to={link.href}
                 end={link.end}
+                data-mascot-tip={navTips[link.href]}
                 className={({ isActive }) =>
                   `font-display text-4xl font-semibold tracking-tight ${isActive ? "text-accent" : "text-fg"}`
                 }
@@ -106,6 +111,7 @@ export function Navbar() {
           </nav>
           <WhatsAppChoice
             prefer="below"
+            tip={startProjectTip}
             className="mt-8 inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink"
           >
             Start a project

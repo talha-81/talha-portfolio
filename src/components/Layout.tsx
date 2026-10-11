@@ -15,7 +15,7 @@ import { SkillsPage } from "../pages/SkillsPage.tsx";
 import { Footer } from "./Footer.tsx";
 import { Navbar } from "./Navbar.tsx";
 import { WhatsAppButton } from "./WhatsAppButton.tsx";
-import { ZoruMascot } from "./ZoruMascot.tsx";
+import { Mascot } from "./Mascot.tsx";
 
 export function Layout() {
   const location = useLocation();
@@ -57,7 +57,7 @@ export function Layout() {
       </main>
       <Footer />
       <WhatsAppButton />
-      <ZoruMascot />
+      <Mascot />
     </div>
   );
 }

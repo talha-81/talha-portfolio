@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { PageCta } from "../components/PageCta.tsx";
 import { navLinks } from "../data/content.ts";
+import { navTips } from "../data/mascotTips.ts";
 import { secondaryBtn } from "../lib/styles.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
 
@@ -27,13 +28,13 @@ export function NotFoundPage() {
             <span className="text-accent">.</span>
           </h1>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/" className={secondaryBtn}>
+            <Link to="/" data-mascot-tip={navTips["/"]} className={secondaryBtn}>
               Back home
             </Link>
             {navLinks
               .filter((link) => link.href !== "/")
               .map((link) => (
-                <Link key={link.href} to={link.href} className={secondaryBtn}>
+                <Link key={link.href} to={link.href} data-mascot-tip={navTips[link.href]} className={secondaryBtn}>
                   {link.label}
                 </Link>
               ))}

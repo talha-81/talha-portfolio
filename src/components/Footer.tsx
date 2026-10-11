@@ -3,6 +3,7 @@ import { ArrowUp } from "lucide-react";
 import type { MouseEvent } from "react";
 import { Link } from "react-router";
 import { aiWorkflowLine, availability, footerLinks, profile, serviceAreas, services } from "../data/content.ts";
+import { navTips, serviceTips } from "../data/mascotTips.ts";
 import { ContactButtons } from "./ContactButtons.tsx";
 
 const year = 2026;
@@ -71,7 +72,7 @@ export function Footer() {
             <p className="mt-3 text-sm font-medium text-fg">{aiWorkflowLine}</p>
             <ul className="mt-5 flex flex-wrap gap-2">
               {serviceAreas.map((area) => (
-                <li key={area} className="rounded-full border border-line px-3 py-1.5 text-xs text-muted">
+                <li key={area} tabIndex={0} data-mascot-tip={`${area} is one of the areas I work in.`} className="rounded-full border border-line px-3 py-1.5 text-xs text-muted outline-none focus-visible:ring-2 focus-visible:ring-accent">
                   {area}
                 </li>
               ))}
@@ -84,7 +85,7 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {footerLinks.map((link) => (
                   <li key={link.href}>
-                    <Link to={link.href} className="text-sm font-medium text-fg hover:text-accent">
+                    <Link to={link.href} data-mascot-tip={navTips[link.href]} className="text-sm font-medium text-fg hover:text-accent">
                       {link.label}
                     </Link>
                   </li>
@@ -96,7 +97,7 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {services.map((service) => (
                   <li key={service.title}>
-                    <Link to="/services" className="text-sm font-medium text-fg hover:text-accent">
+                    <Link to="/services" data-mascot-tip={serviceTips[service.title]} className="text-sm font-medium text-fg hover:text-accent">
                       {service.title}
                     </Link>
                   </li>
@@ -115,6 +116,7 @@ export function Footer() {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" })}
+            data-mascot-tip="Jump back to the top of this page."
             className="inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full border border-line bg-surface px-4 text-sm font-semibold text-fg transition hover:-translate-y-0.5 hover:border-accent sm:self-auto"
           >
             Back to top
