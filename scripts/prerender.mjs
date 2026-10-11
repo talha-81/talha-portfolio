@@ -1,6 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { validateJsonLd } from "./validate-jsonld.mjs";
 
 const distDir = join(process.cwd(), "dist");
 const template = readFileSync(join(distDir, "index.html"), "utf8");
@@ -50,6 +51,7 @@ function withHead(html, seo, canonical, jsonLd) {
 for (const route of routes) {
   const isMissing = route === "/404";
   const { html, seo, canonical, jsonLd } = await render(isMissing ? "/does-not-exist" : route);
+  validateJsonLd(JSON.parse(jsonLd), route);
   const page = withHead(template, seo, isMissing ? "https://talha-ai.netlify.app/" : canonical, jsonLd).replace(
     '<div id="root"></div>',
     `<div id="root">${html}</div>`,
@@ -57,6 +59,8 @@ for (const route of routes) {
   const relative = isMissing ? "404.html" : route === "/" ? "index.html" : `${route.slice(1)}.html`;
   const target = join(distDir, relative);
   mkdirSync(dirname(target), { recursive: true });
+  const visible = page.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+  if (/nayel/i.test(visible)) throw new Error(`Nayel appeared outside JSON-LD on ${route}`);
   writeFileSync(target, page);
   console.log("prerendered", relative);
 }
