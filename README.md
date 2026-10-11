@@ -16,7 +16,7 @@ Built with React, Vite, TypeScript, Tailwind CSS, Framer Motion, React Router, a
 - `/contact` WhatsApp, Email, GitHub, and LinkedIn buttons
 - `/faq` FAQ
 
-Contact is icon-and-label buttons only. The phone number and email address live in the link targets, not as visible text. There is no contact form.
+Contact is icon-and-label buttons only. The phone number and email address are not printed on the page. WhatsApp opens a menu: open the chat, or copy the number. There is no contact form.
 
 ## Run locally
 

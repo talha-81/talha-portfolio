@@ -51,6 +51,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--bg);
+  overflow-x: clip;
 }
 
 body {
@@ -63,8 +64,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-body,
-#root {
+body {
   overflow-x: clip;
 }
 
@@ -225,6 +225,22 @@ body,
     linear-gradient(140deg, var(--accent), transparent 38%, color-mix(in srgb, var(--accent) 55%, transparent))
       border-box;
   border: 1px solid transparent;
+}
+
+.footer-aurora {
+  background:
+    radial-gradient(720px circle at var(--mx, 18%) var(--my, 12%), var(--glow), transparent 46%),
+    radial-gradient(560px 320px at 88% 8%, color-mix(in srgb, var(--accent) 32%, transparent), transparent 58%),
+    radial-gradient(480px 280px at 40% 100%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 10%, var(--bg)), var(--bg) 78%);
+}
+
+.footer-particle {
+  position: absolute;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 18px var(--accent);
+  pointer-events: none;
 }
 
 .ai-field {

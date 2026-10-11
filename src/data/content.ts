@@ -11,6 +11,9 @@ const whatsappMessage = "Hi Talha, I'd like to discuss a project.";
 
 export const whatsappHref = `https://wa.me/923400957785?text=${encodeURIComponent(whatsappMessage)}`;
 
+/** Clipboard value only. Do not render this on the page. */
+export const whatsappNumber = "+923400957785";
+
 export const emailHref = "mailto:tarshad587@gmail.com";
 
 export const availability = "Available worldwide, remote, 24/7.";
