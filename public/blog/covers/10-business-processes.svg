@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none" role="img" aria-label="Illustrated flow of ten business processes connected to an AI agent">
+  <rect width="1200" height="675" fill="#0d1116"/>
+  <g opacity="0.35" stroke="#ffffff" stroke-width="1">
+    <path d="M0 48H1200M0 144H1200M0 240H1200M0 336H1200M0 432H1200M0 528H1200M0 624H1200"/>
+    <path d="M80 0V675M200 0V675M320 0V675M440 0V675M560 0V675M680 0V675M800 0V675M920 0V675M1040 0V675M1160 0V675"/>
+  </g>
+  <circle cx="920" cy="160" r="180" fill="#00df8f" opacity="0.12"/>
+  <circle cx="240" cy="520" r="140" fill="#00df8f" opacity="0.08"/>
+  <g stroke="#00df8f" stroke-width="2" opacity="0.7">
+    <path d="M180 250H430M430 250V180H620M430 250V320H620M430 250V460H620"/>
+    <path d="M860 220H760M860 300H760M860 380H760"/>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui" fill="#ffffff">
+    <text x="72" y="118" font-size="18" letter-spacing="4" fill="#00df8f" font-weight="700">AI AGENTS</text>
+    <text x="72" y="188" font-size="54" font-weight="700">Ten processes,</text>
+    <text x="72" y="252" font-size="54" font-weight="700">one careful loop.</text>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="600">
+    <rect x="72" y="300" width="168" height="44" rx="22" fill="#14181f" stroke="#00df8f"/>
+    <text x="96" y="328" fill="#ffffff">Support</text>
+    <rect x="256" y="300" width="150" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="280" y="328" fill="#ffffff">Leads</text>
+    <rect x="72" y="360" width="168" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="96" y="388" fill="#ffffff">Invoices</text>
+    <rect x="256" y="360" width="190" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="280" y="388" fill="#ffffff">Onboarding</text>
+    <rect x="72" y="420" width="190" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="96" y="448" fill="#ffffff">Meetings</text>
+    <rect x="278" y="420" width="150" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="302" y="448" fill="#ffffff">Reports</text>
+  </g>
+  <g>
+    <rect x="760" y="168" width="340" height="280" rx="28" fill="#14181f" stroke="#00df8f" stroke-width="2"/>
+    <circle cx="820" cy="228" r="16" fill="#00df8f"/>
+    <text x="852" y="234" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="18" font-weight="700">Agent</text>
+    <text x="796" y="290" fill="#9ca3af" font-family="Inter, ui-sans-serif" font-size="16">Read the input</text>
+    <text x="796" y="326" fill="#9ca3af" font-family="Inter, ui-sans-serif" font-size="16">Call the tool</text>
+    <text x="796" y="362" fill="#9ca3af" font-family="Inter, ui-sans-serif" font-size="16">Draft the result</text>
+    <rect x="796" y="388" width="168" height="36" rx="18" fill="#00df8f"/>
+    <text x="820" y="412" fill="#06281c" font-family="Inter, ui-sans-serif" font-size="14" font-weight="700">Human approves</text>
+  </g>
+</svg>

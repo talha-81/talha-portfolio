@@ -22,6 +22,8 @@ const AiPage = load(() => import("../pages/AiPage.tsx"), "AiPage");
 const SkillsPage = load(() => import("../pages/SkillsPage.tsx"), "SkillsPage");
 const ContactPage = load(() => import("../pages/ContactPage.tsx"), "ContactPage");
 const FaqPage = load(() => import("../pages/FaqPage.tsx"), "FaqPage");
+const BlogPage = load(() => import("../pages/BlogPage.tsx"), "BlogPage");
+const BlogPostPage = load(() => import("../pages/BlogPostPage.tsx"), "BlogPostPage");
 const NotFoundPage = load(() => import("../pages/NotFoundPage.tsx"), "NotFoundPage");
 
 let allowRouteMotion = false;
@@ -68,6 +70,8 @@ export function Layout() {
               <Route path="/skills" element={<SkillsPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/faq" element={<FaqPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
             </Suspense>

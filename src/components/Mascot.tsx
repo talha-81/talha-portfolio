@@ -2,6 +2,7 @@ import { AnimatePresence, motion, useAnimation, useReducedMotion } from "framer-
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useLocation } from "react-router";
+import { postBySlug } from "../data/blog.ts";
 import { sectionTips } from "../data/mascotTips.ts";
 import { projectBySlug } from "../data/projects.ts";
 import { MASCOT_CELEBRATE_EVENT, MASCOT_TIP_EVENT } from "../lib/mascot.ts";
@@ -22,6 +23,11 @@ function sectionTip(pathname: string) {
   if (pathname === "/skills") return sectionTips.skills;
   if (pathname === "/contact") return sectionTips.contact;
   if (pathname === "/faq") return sectionTips.faq;
+  if (pathname === "/blog") return sectionTips.blog;
+  if (pathname.startsWith("/blog/")) {
+    const post = postBySlug(pathname.split("/")[2]);
+    return post ? `A note on ${post.title}.` : sectionTips.blog;
+  }
   if (pathname === "/") return sectionTips.home;
   return sectionTips.missing;
 }
