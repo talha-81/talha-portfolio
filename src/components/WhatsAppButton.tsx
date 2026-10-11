@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
 import { WhatsAppIcon } from "./BrandIcons.tsx";
+import { contactTips } from "../data/mascotTips.ts";
 import { WhatsAppChoice } from "./WhatsAppChoice.tsx";
 
 export function WhatsAppButton() {
@@ -7,6 +8,7 @@ export function WhatsAppButton() {
     <WhatsAppChoice
       prefer="above"
       ariaLabel="Chat on WhatsApp"
+      tip={contactTips.WhatsApp}
       className="group pointer-events-auto fixed bottom-4 left-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[var(--shadow)] transition hover:-translate-y-0.5"
     >
       {({ open }) => (

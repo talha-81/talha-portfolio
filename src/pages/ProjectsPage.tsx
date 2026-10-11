@@ -74,6 +74,7 @@ export function ProjectsPage() {
                 key={item.id}
                 type="button"
                 aria-pressed={active}
+                data-mascot-tip={item.id === "all" ? "Show every project." : `Show the ${item.label.toLowerCase()} projects.`}
                 onClick={() => setFilter(item.id)}
                 className={`min-h-11 rounded-full border px-4 text-sm font-semibold transition ${
                   active ? "border-accent bg-accent text-accent-ink" : "border-line bg-surface text-fg hover:border-accent"

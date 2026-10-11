@@ -55,12 +55,12 @@ The hero ID card uses `public/avatar/talha.webp` (WebP, 1086×1448). `src/compon
 
 ## Mascot
 
-Zoru is always shown, fixed at the bottom-right. There is no hide control. On a desktop pointer, the tip opens on hover and on click. On touch devices, tap opens it. Reduced-motion users get a static Zoru. The artwork files are:
+Talha, the chibi illustration, is always shown, fixed at the bottom-right. There is no hide control. On a desktop pointer, hovering him or any tipped control opens a first-person tip. On touch devices, tap him for the page tip, or long-press a control for its tip. Keyboard focus shows the same tip. Reduced-motion users still get the tips, without the look animation. The artwork files are:
 
-- `public/mascot/zoru-chibi-512.webp` (323×512, used first)
-- `public/mascot/zoru-chibi.png` (454×720 fallback)
+- `public/mascot/mascot-chibi-512.webp` (323×512, used first)
+- `public/mascot/mascot-chibi.png` (454×720 fallback)
 
-GitHub, LinkedIn, Email, and WhatsApp clicks call `celebrateZoru()` from `src/lib/mascot.ts`. A round WhatsApp button sits at the bottom-left, away from Zoru.
+GitHub, LinkedIn, Email, and WhatsApp clicks call `celebrateMascot()` from `src/lib/mascot.ts`. A round WhatsApp button sits at the bottom-left, away from the mascot.
 
 ## Figures
 

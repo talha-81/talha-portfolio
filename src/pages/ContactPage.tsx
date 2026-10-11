@@ -39,7 +39,7 @@ export function ContactPage() {
           { title: "Shape the work", text: "We line up the outcome, the interface, and where an agent or automation fits." },
           { title: "Build remote", text: "I deliver across time zones and stay available 24/7 for client work." },
         ].map((item, index) => (
-          <article key={item.title} className="gradient-ring rounded-[28px] p-6">
+          <article key={item.title} tabIndex={0} data-mascot-tip={item.text} className="gradient-ring rounded-[28px] p-6 outline-none focus-visible:ring-2 focus-visible:ring-accent">
             <p className="font-display text-sm font-semibold text-accent">{String(index + 1).padStart(2, "0")}</p>
             <h2 className="mt-3 font-display text-2xl font-semibold text-fg">{item.title}</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>

@@ -6,6 +6,7 @@ import { SectionHeading } from "../components/SectionHeading.tsx";
 import { ServiceMark } from "../components/ServiceMark.tsx";
 import { SpotlightCard } from "../components/SpotlightCard.tsx";
 import { processSteps, serviceAreas, services } from "../data/content.ts";
+import { serviceTips } from "../data/mascotTips.ts";
 import { secondaryBtn } from "../lib/styles.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
 
@@ -43,7 +44,7 @@ export function ServicesPage() {
             {services.map((service, index) => (
               <li key={service.title} className={spans[index] ?? ""}>
                 <Reveal delay={index * 0.04} className="h-full">
-                  <SpotlightCard className="flex h-full flex-col p-6 sm:p-7">
+                  <SpotlightCard className="flex h-full flex-col p-6 sm:p-7" tip={serviceTips[service.title]}>
                     <span
                       className="float-slow grid h-12 w-12 place-items-center rounded-2xl bg-accent/15 text-accent"
                       style={{ animationDelay: `${index * 0.35}s` }}
@@ -89,7 +90,7 @@ export function ServicesPage() {
         />
         <ol className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {processSteps.map((step, index) => (
-            <li key={step.title} className="gradient-ring rounded-[28px] p-6">
+            <li key={step.title} data-mascot-tip={step.text} tabIndex={0} className="gradient-ring rounded-[28px] p-6 outline-none focus-visible:ring-2 focus-visible:ring-accent">
               <p className="font-display text-4xl font-semibold tracking-tighter text-accent/80">
                 {String(index + 1).padStart(2, "0")}
               </p>

@@ -72,7 +72,7 @@ export function ProjectPage() {
             <ul className="mt-6 space-y-3">
               {project.links.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} target="_blank" rel="noreferrer noopener" className={primaryBtn}>
+                  <a href={link.href} target="_blank" rel="noreferrer noopener" data-mascot-tip="Opens this project's public repository." className={primaryBtn}>
                     {link.label}
                     <ArrowUpRight size={16} />
                   </a>

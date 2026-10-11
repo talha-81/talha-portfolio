@@ -13,6 +13,7 @@ import { SpotlightCard } from "../components/SpotlightCard.tsx";
 import { StatsRow } from "../components/StatsRow.tsx";
 import { WhatsAppChoice } from "../components/WhatsAppChoice.tsx";
 import { aiWorkflowLine, availability, services } from "../data/content.ts";
+import { serviceTips, startProjectTip } from "../data/mascotTips.ts";
 import { homeProjects } from "../data/projects.ts";
 import { primaryBtn, secondaryBtn } from "../lib/styles.ts";
 import { usePageMeta } from "../lib/usePageMeta.ts";
@@ -77,11 +78,11 @@ export function HomePage() {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <WhatsAppChoice className={primaryBtn}>
+              <WhatsAppChoice className={primaryBtn} tip={startProjectTip}>
                 Start a project
                 <ArrowUpRight size={18} />
               </WhatsAppChoice>
-              <Link to="/projects" className={secondaryBtn}>
+              <Link to="/projects" data-mascot-tip="Open the full project list." className={secondaryBtn}>
                 View projects
               </Link>
             </div>
@@ -99,6 +100,7 @@ export function HomePage() {
                 dragElastic={0.18}
                 dragConstraints={constraintsRef}
                 dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                data-mascot-tip="That's me. You can drag the badge."
                 className="relative cursor-grab active:cursor-grabbing"
               >
                 <div aria-hidden="true" className="absolute -top-28 left-1/2 h-28 w-5 -translate-x-1/2">
@@ -140,7 +142,7 @@ export function HomePage() {
             }
             lede="Web systems, AI products, and automation. The full set lives on the services page."
           />
-          <Link to="/services" className={`${secondaryBtn} w-fit`}>
+          <Link to="/services" data-mascot-tip="See the full list of what I build." className={`${secondaryBtn} w-fit`}>
             All services
             <ArrowUpRight size={16} />
           </Link>
@@ -149,7 +151,7 @@ export function HomePage() {
           {teaser.map((service, index) => (
             <li key={service.title}>
               <Reveal delay={index * 0.06}>
-                <SpotlightCard className="h-full p-6">
+                <SpotlightCard className="h-full p-6" tip={serviceTips[service.title]}>
                   <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent/15 text-accent">
                     <ServiceMark title={service.title} className="h-6 w-6" />
                   </span>
@@ -175,7 +177,7 @@ export function HomePage() {
               }
               lede="A ticketing system, an MCP chatbot, and vehicle detection. The rest of the work is one page away."
             />
-            <Link to="/projects" className={`${secondaryBtn} w-fit`}>
+            <Link to="/projects" data-mascot-tip="Open every project, not just these three." className={`${secondaryBtn} w-fit`}>
               All projects
               <ArrowUpRight size={16} />
             </Link>

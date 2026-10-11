@@ -114,11 +114,11 @@ body {
   background-size: 40px 40px;
 }
 
-.zoru-shadow {
+.mascot-shadow {
   filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.45));
 }
 
-:root[data-theme="light"] .zoru-shadow {
+:root[data-theme="light"] .mascot-shadow {
   filter: drop-shadow(0 10px 16px rgba(20, 33, 27, 0.2));
 }
 

@@ -19,6 +19,7 @@ export function FaqList() {
               <button
                 type="button"
                 className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                data-mascot-tip={item.a}
                 aria-expanded={expanded}
                 aria-controls={panelId}
                 onClick={() => setOpen(expanded ? null : index)}

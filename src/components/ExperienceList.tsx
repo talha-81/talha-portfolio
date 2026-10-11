@@ -18,6 +18,7 @@ export function ExperienceList() {
             <button
               type="button"
               className="flex w-full items-center gap-4 py-6 text-left sm:gap-6 sm:py-7"
+              data-mascot-tip={`This role is ${role.title}. ${role.summary}.`}
               aria-expanded={expanded}
               aria-controls={panelId}
               onClick={() => setOpen(expanded ? null : index)}

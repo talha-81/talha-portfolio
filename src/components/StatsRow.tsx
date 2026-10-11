@@ -1,3 +1,4 @@
+import { statTips } from "../data/mascotTips.ts";
 import { stats } from "../data/stats.ts";
 import { CountUp } from "./CountUp.tsx";
 
@@ -19,7 +20,7 @@ export function StatsRow({ className = "" }: { className?: string }) {
   return (
     <dl className={`grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 ${items.length > 2 ? "lg:grid-cols-3" : ""} ${className}`}>
       {items.map((item) => (
-        <div key={item.label} className="bg-surface px-5 py-5 sm:px-6">
+        <div key={item.label} tabIndex={0} data-mascot-tip={statTips[item.label]} className="bg-surface px-5 py-5 outline-none focus-visible:ring-2 focus-visible:ring-accent sm:px-6">
           <dt className="text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">{item.label}</dt>
           <dd className="mt-2 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
             <CountUp value={item.value} />

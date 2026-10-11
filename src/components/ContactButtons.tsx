@@ -1,6 +1,7 @@
 import { Mail } from "lucide-react";
 import { emailHref, profile } from "../data/content.ts";
-import { celebrateZoru } from "../lib/mascot.ts";
+import { celebrateMascot } from "../lib/mascot.ts";
+import { contactTips } from "../data/mascotTips.ts";
 import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from "./BrandIcons.tsx";
 import { WhatsAppChoice } from "./WhatsAppChoice.tsx";
 
@@ -56,7 +57,7 @@ export function ContactButtons({ size = "md", className = "", labels }: ContactB
         if (!("href" in channel)) {
           return (
             <li key={channel.label} className="min-w-0">
-              <WhatsAppChoice className={buttonClass}>
+              <WhatsAppChoice className={buttonClass} tip={contactTips.WhatsApp}>
                 <Icon className={large ? "h-5 w-5" : "h-4 w-4"} />
                 WhatsApp
               </WhatsAppChoice>
@@ -71,7 +72,8 @@ export function ContactButtons({ size = "md", className = "", labels }: ContactB
               {...(channel.external
                 ? { target: "_blank", rel: "noreferrer noopener" }
                 : {})}
-              onClick={() => celebrateZoru()}
+              onClick={() => celebrateMascot()}
+              data-mascot-tip={contactTips[channel.label]}
               className={buttonClass}
             >
               <Icon className={large ? "h-5 w-5" : "h-4 w-4"} />

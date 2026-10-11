@@ -58,7 +58,7 @@ export function AboutPage() {
         }
       >
         <AiToolChips />
-        <Link to="/projects" className={`${secondaryBtn} mt-6`}>
+        <Link to="/projects" data-mascot-tip="Open the full project list." className={`${secondaryBtn} mt-6`}>
           View projects
         </Link>
       </PageHero>
@@ -86,7 +86,7 @@ export function AboutPage() {
             {processSteps.map((step, index) => (
               <li key={step.title}>
                 <Reveal delay={index * 0.05}>
-                  <SpotlightCard className="h-full p-6">
+                  <SpotlightCard className="h-full p-6" tip={step.text}>
                     <p className="font-display text-sm font-semibold text-accent">{String(index + 1).padStart(2, "0")}</p>
                     <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight text-fg">{step.title}</h2>
                     <p className="mt-3 text-sm leading-relaxed text-muted">{step.text}</p>
@@ -111,7 +111,7 @@ export function AboutPage() {
           <ul className="mt-10 grid gap-4 md:grid-cols-2">
             {certifications.map((item) => (
               <li key={`${item.name}-${item.issuer}`}>
-                <SpotlightCard className="flex h-full flex-col justify-between gap-4 p-6 sm:flex-row sm:items-end">
+                <SpotlightCard className="flex h-full flex-col justify-between gap-4 p-6 sm:flex-row sm:items-end" tip={`${item.name}. ${item.issuer}. ${item.date}.`}>
                   <div>
                     <p className="font-display text-xl font-semibold tracking-tight text-fg">{item.name}</p>
                     <p className="mt-2 text-sm text-muted">{item.issuer}</p>
