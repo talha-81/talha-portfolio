@@ -43,7 +43,7 @@ export const contactTips: Record<string, string> = {
   LinkedIn: "Open my LinkedIn profile.",
 };
 
-export const startProjectTip = "Opens WhatsApp so you can message me or copy the number.";
+export const startProjectTip = "Head to my contact page to start your project.";
 
 export function projectTip(summary: string) {
   return `This is one of mine. ${summary}`;
