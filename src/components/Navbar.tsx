@@ -1,37 +1,19 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { menuLinks, navLinks } from "../data/content.ts";
+import { Link, NavLink, useLocation } from "react-router";
+import { navLinks, whatsappHref } from "../data/content.ts";
+import { celebrateZoru } from "../lib/mascot.ts";
+import { ThemeToggle } from "./ThemeToggle.tsx";
 
 export function Navbar() {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("");
+  const [openPath, setOpenPath] = useState(location.pathname);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const nodes = navLinks
-      .map((link) => document.querySelector(link.href))
-      .filter((node): node is Element => node instanceof Element);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`#${visible.target.id}`);
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: [0.1, 0.25, 0.5] },
-    );
-
-    nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
+  if (openPath !== location.pathname) {
+    setOpenPath(location.pathname);
+    setOpen(false);
+  }
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -50,41 +32,44 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 h-24 border-b transition-colors ${
-        scrolled || open
-          ? "border-white/10 bg-[#0f1115]/80 backdrop-blur-md"
-          : "border-transparent bg-[#0f1115]/80 backdrop-blur-md"
-      }`}
-    >
-      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a
-          href="#top"
-          onClick={() => setOpen(false)}
-          className="font-display text-sm font-bold tracking-[0.28em] text-white sm:text-base"
-        >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-header backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 sm:px-8 md:h-20">
+        <Link to="/" className="font-display text-sm font-bold tracking-[0.28em] text-fg sm:text-base">
           TALHA
-          <span className="text-[#00df8f]">.</span>
-        </a>
+          <span className="text-accent">.</span>
+        </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.href}
-              href={link.href}
-              className={`text-sm font-semibold tracking-[0.18em] uppercase transition-colors hover:text-[#00df8f] ${
-                active === link.href ? "text-[#00df8f]" : "text-gray-300"
-              }`}
+              to={link.href}
+              end={link.end}
+              className={({ isActive }) =>
+                `text-xs font-semibold tracking-[0.16em] uppercase transition-colors hover:text-accent ${
+                  isActive ? "text-accent" : "text-muted"
+                }`
+              }
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noreferrer noopener"
+            onClick={() => celebrateZoru()}
+            className="hidden min-h-11 items-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:inline-flex"
+          >
+            Start a project
+          </a>
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full border border-line text-fg lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((value) => !value)}
@@ -92,34 +77,37 @@ export function Navbar() {
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
-          <a
-            href="#contact"
-            aria-label="Go to contact"
-            onClick={() => setOpen(false)}
-            className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/5"
-          >
-            <span className="h-2.5 w-2.5 rounded-full bg-[#00df8f] shadow-[0_0_12px_#00df8f]" />
-          </a>
         </div>
       </div>
 
       {open ? (
         <div
           id="mobile-menu"
-          className="absolute inset-x-0 top-24 h-[calc(100vh-6rem)] overflow-y-auto bg-[#0d1116]/95 px-6 py-8 backdrop-blur-md lg:hidden"
+          className="absolute inset-x-0 top-16 z-50 h-[calc(100vh-4rem)] overflow-y-auto bg-ink px-6 py-8 md:top-20 md:h-[calc(100vh-5rem)] lg:hidden"
         >
-          <nav className="flex flex-col gap-6" aria-label="Mobile">
-            {menuLinks.map((link) => (
-              <a
+          <nav className="flex flex-col gap-5" aria-label="Mobile">
+            {navLinks.map((link) => (
+              <NavLink
                 key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="font-display text-4xl font-semibold tracking-tight text-white"
+                to={link.href}
+                end={link.end}
+                className={({ isActive }) =>
+                  `font-display text-4xl font-semibold tracking-tight ${isActive ? "text-accent" : "text-fg"}`
+                }
               >
-                {link.label.toUpperCase()}
-              </a>
+                {link.label}
+              </NavLink>
             ))}
           </nav>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noreferrer noopener"
+            onClick={() => celebrateZoru()}
+            className="mt-8 inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink"
+          >
+            Start a project
+          </a>
         </div>
       ) : null}
     </header>

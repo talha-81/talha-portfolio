@@ -6,10 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Talha Arshad is a software engineer in Pakistan. He works part-time at Nayel Solutions on full-stack web applications, APIs, and AI-driven features."
+      content="Talha Arshad is a software engineer in Pakistan. He builds web applications, management systems, AI products, and automation for clients worldwide. Available remotely, 24/7."
     />
     <meta name="theme-color" content="#0d1116" />
     <title>Talha Arshad — Software Engineer</title>
+    <style>
+      html,
+      body {
+        background: #0d1116;
+        color: #ffffff;
+      }
+      html[data-theme="light"],
+      html[data-theme="light"] body {
+        background: #f4f6f3;
+        color: #14211b;
+      }
+    </style>
+    <script>
+      (function () {
+        var key = "theme";
+        var theme = "dark";
+        try {
+          var stored = localStorage.getItem(key);
+          if (stored === "light" || stored === "dark") theme = stored;
+          else if (window.matchMedia("(prefers-color-scheme: light)").matches) theme = "light";
+        } catch (e) {}
+        var root = document.documentElement;
+        root.setAttribute("data-theme", theme);
+        root.style.colorScheme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "light" ? "#f4f6f3" : "#0d1116");
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

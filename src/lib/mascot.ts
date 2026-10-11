@@ -1,4 +1,4 @@
-/** Dispatch this when a future contact form is submitted successfully. */
+/** Dispatch this when an outbound contact link is used. */
 export const ZORU_CELEBRATE_EVENT = "zoru:celebrate";
 
 export function celebrateZoru() {
