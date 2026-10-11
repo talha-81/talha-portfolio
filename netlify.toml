@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# The site is one scrolling page (no client-side router). This fallback
+# still serves the app for any direct path so Netlify does not 404 a refresh
+# if routes are added later. Existing files in dist/ are served first.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
