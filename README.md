@@ -41,7 +41,10 @@ The repo includes `netlify.toml`:
 
 - Build command: `npm run build`
 - Publish directory: `dist`
-- SPA redirects for `/about`, `/services`, `/projects`, `/projects/*`, `/ai`, `/skills`, `/contact`, `/faq`, and a `/*` fallback to `/index.html` (status 200)
+- SPA redirects for `/about`, `/services`, `/projects`, `/projects/*`, `/ai`, `/skills`, `/contact`, `/faq`, and a `/*` fallback to `/index.html` (status 200, not forced)
+- `/sitemap.xml` and `/robots.txt` are real files, so the fallback does not replace them
+
+The public site is [https://talha-ai.netlify.app/](https://talha-ai.netlify.app/).
 
 Connect the repository in Netlify and use the settings from that file. No environment variables are required. This project is not deployed from here.
 

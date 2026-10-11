@@ -113,8 +113,8 @@ export function HomePage() {
                   />
                   <Avatar />
                   <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[#0b0e13] via-[#0b0e13]/85 to-transparent px-6 pt-24 pb-7">
-                    <p className="font-display text-4xl font-semibold tracking-tight text-white">
-                      Talha
+                    <p className="font-display text-[1.65rem] leading-[1.05] font-semibold tracking-tight text-white sm:text-[1.85rem]">
+                      Talha Arshad
                       <span className="text-accent">.</span>
                     </p>
                     <p className="mt-1 text-xs font-semibold tracking-[0.2em] text-white/80 uppercase">

@@ -341,7 +341,7 @@ export function Mascot() {
                   <source srcSet="/mascot/mascot-chibi-512.webp" type="image/webp" />
                   <img
                     src="/mascot/mascot-chibi.png"
-                    alt="Talha, a chibi illustration with green hair"
+                    alt="Talha Arshad, a chibi illustration with green hair"
                     width={323}
                     height={512}
                     draggable={false}
