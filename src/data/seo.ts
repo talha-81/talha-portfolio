@@ -89,34 +89,56 @@ export function assertPageSeo() {
   }
 }
 
-const skills = [...new Set(skillGroups.flatMap((group) => [...group.skills]))];
+const personId = `${SITE_URL}/#person`;
+const websiteId = `${SITE_URL}/#website`;
+
+/** Skill chips already rendered on the site. Nothing is added beyond that list. */
+const knowsAbout = [...new Set(skillGroups.flatMap((group) => [...group.skills]))];
 
 export function structuredData(pathname: string) {
   const url = canonicalUrl(pathname);
   const person = {
     "@type": "Person",
+    "@id": personId,
     name: profile.name,
-    jobTitle: "Software Engineer",
+    jobTitle: ["Software Engineer", "Agentic AI Engineer"],
+    hasOccupation: [
+      { "@type": "Occupation", name: "Software Engineer" },
+      { "@type": "Occupation", name: "Agentic AI Engineer" },
+    ],
+    worksFor: {
+      "@type": "Organization",
+      name: "Nayel Solutions",
+      url: "https://www.nayelsolutions.com/",
+    },
     url: `${SITE_URL}/`,
     image: `${SITE_URL}/avatar/talha.webp`,
     address: { "@type": "PostalAddress", addressCountry: "PK" },
-    sameAs: [profile.github, profile.linkedin],
-    knowsAbout: skills,
+    sameAs: ["https://www.linkedin.com/in/talha-arshad81/", "https://github.com/talha-81"],
+    knowsAbout,
   };
   const website = {
     "@type": "WebSite",
+    "@id": websiteId,
     name: "Talha Arshad",
     url: `${SITE_URL}/`,
     description: pages["/"].description,
+    publisher: { "@id": personId },
+    about: { "@id": personId },
   };
   const service = {
     "@type": "ProfessionalService",
+    "@id": `${SITE_URL}/#service`,
     name: "Talha Arshad",
     url: `${SITE_URL}/services`,
     image: OG_IMAGE_URL,
     areaServed: "Worldwide",
     address: { "@type": "PostalAddress", addressCountry: "PK" },
-    serviceType: services.map((item) => item.title),
+    founder: { "@id": personId },
+    makesOffer: services.map((item) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: item.title, serviceType: item.title },
+    })),
   };
   const graph: Record<string, unknown>[] = [person, website, service];
 
@@ -169,7 +191,7 @@ export function structuredData(pathname: string) {
         description: project.summary,
         url,
         applicationCategory: "DeveloperApplication",
-        author: { "@type": "Person", name: profile.name },
+        author: { "@id": personId },
         ...(project.cover ? { image: `${SITE_URL}${project.cover}` } : {}),
       });
     }
