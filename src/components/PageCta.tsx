@@ -1,9 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router";
 import { availability } from "../data/content.ts";
-import { startProjectTip } from "../data/mascotTips.ts";
 import { primaryBtn } from "../lib/styles.ts";
 import { ContactButtons } from "./ContactButtons.tsx";
+import { StartProjectLink } from "./StartProjectLink.tsx";
 
 export function PageCta({
   title = "Tell me about the project.",
@@ -22,10 +21,10 @@ export function PageCta({
         </h2>
         <p className="mt-4 max-w-xl text-muted">{text}</p>
         <div className="mt-8 flex flex-col items-start gap-4">
-          <Link to="/contact" data-mascot-tip={startProjectTip} className={primaryBtn}>
+          <StartProjectLink className={primaryBtn}>
             Start a project
             <ArrowUpRight size={18} />
-          </Link>
+          </StartProjectLink>
           <ContactButtons labels={["Email", "GitHub", "LinkedIn"]} />
         </div>
       </div>

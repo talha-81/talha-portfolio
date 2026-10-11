@@ -2,6 +2,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router";
 import { EASE } from "../lib/motion.ts";
+import { scrollToContactFormWhenReady } from "../lib/scrollToContactForm.ts";
 import { AboutPage } from "../pages/AboutPage.tsx";
 import { AiPage } from "../pages/AiPage.tsx";
 import { ContactPage } from "../pages/ContactPage.tsx";
@@ -22,8 +23,11 @@ export function Layout() {
   const reduce = useReducedMotion();
 
   useEffect(() => {
+    if (location.hash === "#contact-form") {
+      return scrollToContactFormWhenReady(Boolean(reduce));
+    }
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash, reduce]);
 
   return (
     <div className="min-h-screen bg-ink font-sans text-fg">
