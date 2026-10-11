@@ -2,8 +2,9 @@
   command = "npm run build"
   publish = "dist"
 
-# SPA fallbacks. Netlify serves real files first, then these rules, so a
-# refresh on any client route still returns the app.
+# SPA fallbacks. Netlify serves real files first, then these rules.
+# /sitemap.xml, /robots.txt, and /og-image.jpg stay real files in dist.
+# The splat is not forced, so it does not replace those files.
 
 [[redirects]]
   from = "/about"
@@ -49,3 +50,4 @@
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
