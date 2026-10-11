@@ -1,9 +1,9 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
-import { navLinks, whatsappHref } from "../data/content.ts";
-import { celebrateZoru } from "../lib/mascot.ts";
+import { navLinks } from "../data/content.ts";
 import { ThemeToggle } from "./ThemeToggle.tsx";
+import { WhatsAppChoice } from "./WhatsAppChoice.tsx";
 
 export function Navbar() {
   const location = useLocation();
@@ -34,39 +34,44 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-header backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 sm:px-8 md:h-20">
-        <Link to="/" className="font-display text-sm font-bold tracking-[0.28em] text-fg sm:text-base">
+        <Link to="/" className="shrink-0 font-display text-sm font-bold tracking-[0.2em] text-fg xl:text-base xl:tracking-[0.28em]">
           TALHA
           <span className="text-accent">.</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-3 xl:gap-5 lg:flex" aria-label="Primary">
           {navLinks.map((link) => (
             <NavLink
               key={link.href}
               to={link.href}
               end={link.end}
               className={({ isActive }) =>
-                `text-xs font-semibold tracking-[0.16em] uppercase transition-colors hover:text-accent ${
+                `relative py-1 text-[11px] font-semibold tracking-[0.12em] whitespace-nowrap uppercase transition-colors hover:text-accent xl:text-xs xl:tracking-[0.14em] ${
                   isActive ? "text-accent" : "text-muted"
                 }`
               }
             >
-              {link.label}
+              {({ isActive }) => (
+                <>
+                  {link.label}
+                  {isActive ? (
+                    <span className="absolute inset-x-0 -bottom-1 h-0.5 rounded-full bg-accent" />
+                  ) : null}
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <ThemeToggle />
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noreferrer noopener"
-            onClick={() => celebrateZoru()}
-            className="hidden min-h-11 items-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:inline-flex"
+          <WhatsAppChoice
+            prefer="below"
+            className="hidden min-h-11 items-center rounded-full bg-accent px-3 text-xs font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:inline-flex xl:px-4 xl:text-sm"
           >
-            Start a project
-          </a>
+            <span className="xl:hidden">Start</span>
+            <span className="hidden xl:inline">Start a project</span>
+          </WhatsAppChoice>
           <button
             type="button"
             className="grid h-11 w-11 place-items-center rounded-full border border-line text-fg lg:hidden"
@@ -99,15 +104,12 @@ export function Navbar() {
               </NavLink>
             ))}
           </nav>
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noreferrer noopener"
-            onClick={() => celebrateZoru()}
+          <WhatsAppChoice
+            prefer="below"
             className="mt-8 inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink"
           >
             Start a project
-          </a>
+          </WhatsAppChoice>
         </div>
       ) : null}
     </header>

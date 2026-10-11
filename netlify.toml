@@ -11,6 +11,11 @@
   status = 200
 
 [[redirects]]
+  from = "/services"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
   from = "/projects"
   to = "/index.html"
   status = 200
@@ -32,6 +37,11 @@
 
 [[redirects]]
   from = "/contact"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
   to = "/index.html"
   status = 200
 

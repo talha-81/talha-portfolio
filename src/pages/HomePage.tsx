@@ -2,29 +2,29 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import { Link } from "react-router";
-import { Avatar } from "../components/Avatar.tsx";
 import { AiToolChips } from "../components/AiToolChips.tsx";
-import { FaqList } from "../components/FaqList.tsx";
+import { Avatar } from "../components/Avatar.tsx";
+import { PageCta } from "../components/PageCta.tsx";
 import { ProjectCard } from "../components/ProjectCard.tsx";
+import { Reveal } from "../components/Reveal.tsx";
 import { SectionHeading } from "../components/SectionHeading.tsx";
+import { ServiceMark } from "../components/ServiceMark.tsx";
+import { SpotlightCard } from "../components/SpotlightCard.tsx";
 import { StatsRow } from "../components/StatsRow.tsx";
-import {
-  aiWorkflowLine,
-  availability,
-  processSteps,
-  services,
-  whatsappHref,
-} from "../data/content.ts";
-import { featuredProjects, projectsInGroup } from "../data/projects.ts";
-import { celebrateZoru } from "../lib/mascot.ts";
+import { WhatsAppChoice } from "../components/WhatsAppChoice.tsx";
+import { aiWorkflowLine, availability, services } from "../data/content.ts";
+import { homeProjects } from "../data/projects.ts";
 import { primaryBtn, secondaryBtn } from "../lib/styles.ts";
-import { useDocumentTitle } from "../lib/useDocumentTitle.ts";
+import { usePageMeta } from "../lib/usePageMeta.ts";
 
 export function HomePage() {
-  useDocumentTitle("Talha Arshad — Software Engineer");
+  usePageMeta(
+    "Talha Arshad — Software Engineer",
+    "Talha Arshad is a software engineer in Pakistan. He builds web applications, management systems, AI products, and automation for clients worldwide. Available remotely, 24/7.",
+  );
   const reduce = useReducedMotion();
   const constraintsRef = useRef<HTMLDivElement>(null);
-  const aiHighlights = projectsInGroup("ai").slice(0, 3);
+  const teaser = services.slice(0, 3);
 
   return (
     <>
@@ -77,16 +77,10 @@ export function HomePage() {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noreferrer noopener"
-                onClick={() => celebrateZoru()}
-                className={primaryBtn}
-              >
+              <WhatsAppChoice className={primaryBtn}>
                 Start a project
                 <ArrowUpRight size={18} />
-              </a>
+              </WhatsAppChoice>
               <Link to="/projects" className={secondaryBtn}>
                 View projects
               </Link>
@@ -134,50 +128,60 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
-        <SectionHeading
-          eyebrow="Services"
-          title={
-            <>
-              What I <span className="text-stroke">build</span>
-              <span className="text-accent">.</span>
-            </>
-          }
-          lede="The same kinds of products already in the project list: web systems, AI, vision, and automation."
-        />
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <li
-              key={service.title}
-              className="rounded-[28px] border border-line bg-surface p-6 transition hover:-translate-y-1 hover:border-accent/50"
-            >
-              <h3 className="font-display text-2xl font-semibold tracking-tight text-fg">{service.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{service.text}</p>
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading
+            eyebrow="Services"
+            title={
+              <>
+                What I <span className="text-stroke">build</span>
+                <span className="text-accent">.</span>
+              </>
+            }
+            lede="Web systems, AI products, and automation. The full set lives on the services page."
+          />
+          <Link to="/services" className={`${secondaryBtn} w-fit`}>
+            All services
+            <ArrowUpRight size={16} />
+          </Link>
+        </div>
+        <ul className="mt-12 grid gap-4 md:grid-cols-3">
+          {teaser.map((service, index) => (
+            <li key={service.title}>
+              <Reveal delay={index * 0.06}>
+                <SpotlightCard className="h-full p-6">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent/15 text-accent">
+                    <ServiceMark title={service.title} className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-5 font-display text-2xl font-semibold tracking-tight text-fg">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{service.text}</p>
+                </SpotlightCard>
+              </Reveal>
             </li>
           ))}
         </ul>
       </section>
 
       <section className="border-y border-line bg-soft">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading
-              eyebrow="AI"
+              eyebrow="Work"
               title={
                 <>
-                  Agents and <span className="text-stroke">chatbots</span>
+                  Featured <span className="text-stroke">projects</span>
                   <span className="text-accent">.</span>
                 </>
               }
-              lede="Chatbots, voice agents, MCP, and automation for client products."
+              lede="A ticketing system, an MCP chatbot, and vehicle detection. The rest of the work is one page away."
             />
-            <Link to="/ai" className={`${secondaryBtn} w-fit`}>
-              AI page
+            <Link to="/projects" className={`${secondaryBtn} w-fit`}>
+              All projects
               <ArrowUpRight size={16} />
             </Link>
           </div>
-          <ul className="mt-12 grid gap-5 md:grid-cols-3">
-            {aiHighlights.map((project) => (
+          <ul className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {homeProjects().map((project) => (
               <li key={project.slug}>
                 <ProjectCard project={project} />
               </li>
@@ -186,92 +190,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading
-            eyebrow="Work"
-            title={
-              <>
-                Selected <span className="text-stroke">projects</span>
-                <span className="text-accent">.</span>
-              </>
-            }
-            lede="A short set from web systems, AI, vision, and data. The full list is on the projects page."
-          />
-          <Link to="/projects" className={`${secondaryBtn} w-fit`}>
-            All projects
-            <ArrowUpRight size={16} />
-          </Link>
-        </div>
-        <ul className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {featuredProjects().map((project) => (
-            <li key={project.slug}>
-              <ProjectCard project={project} />
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="border-t border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
-          <SectionHeading
-            eyebrow="How I work"
-            title={
-              <>
-                From brief to <span className="text-stroke">shipped</span>
-                <span className="text-accent">.</span>
-              </>
-            }
-            lede={aiWorkflowLine}
-          />
-          <div className="mt-6">
-            <AiToolChips />
-          </div>
-          <ol className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {processSteps.map((step, index) => (
-              <li key={step.title} className="rounded-[28px] border border-line bg-surface p-6">
-                <p className="font-display text-sm font-semibold text-accent">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-fg">{step.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{step.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-3xl px-5 py-20 sm:px-8 md:py-28">
-        <SectionHeading eyebrow="FAQ" title="Before you write." />
-        <div className="mt-8">
-          <FaqList />
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8 md:pb-28">
-        <div className="rounded-[32px] border border-line bg-surface px-6 py-10 sm:px-10 sm:py-12">
-          <p className="text-xs font-semibold tracking-[0.22em] text-accent uppercase">Hire me</p>
-          <h2 className="mt-3 max-w-xl font-display text-4xl leading-[0.95] font-bold tracking-tight text-fg sm:text-5xl">
-            Tell me about the project.
-          </h2>
-          <p className="mt-4 max-w-xl text-muted">{availability}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noreferrer noopener"
-              onClick={() => celebrateZoru()}
-              className={primaryBtn}
-            >
-              Start a project
-              <ArrowUpRight size={18} />
-            </a>
-            <Link to="/contact" className={secondaryBtn}>
-              Contact page
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageCta />
     </>
   );
 }

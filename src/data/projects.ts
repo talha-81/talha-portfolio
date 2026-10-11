@@ -37,6 +37,7 @@ export type Project = {
   tags: readonly string[];
   links: readonly ProjectLink[];
   cover?: string;
+  coverAlt?: string;
   note?: string;
   featured?: boolean;
 };
@@ -128,7 +129,8 @@ export const projects: readonly Project[] = [
     description:
       "Automated WhatsApp messaging flows. The public work includes exported n8n workflows and a FastAPI service that reads a chatbot's conversation history from Supabase, grouped by sender.",
     tags: ["n8n", "FastAPI", "Supabase", "WhatsApp"],
-    cover: "/covers/automation.jpg",
+    cover: "/covers/automation.webp",
+    coverAlt: "Abstract cover art for the WhatsApp automation project.",
     links: [
       { label: "n8n workflows", href: "https://github.com/talha-81/n8n" },
       { label: "WhatsApp API", href: "https://github.com/talha-81/fast-api" },
@@ -151,6 +153,8 @@ export const projects: readonly Project[] = [
     description:
       "Detects and counts the vehicles on a road. The vehicle-detect-count app uses OpenCV Haar cascades, one for cars and one for the front of a bus, draws a box around each detection, and reports how many cars and buses it found. Flask serves the app. Sample images are in the repository's sample_data folder.",
     tags: ["OpenCV", "Flask", "NumPy", "Pillow", "Computer vision"],
+    cover: "/covers/vehicle.webp",
+    coverAlt: "Cars marked in a road image from the public vehicle-detection sample set.",
     links: [
       {
         label: "Repository",
@@ -167,6 +171,8 @@ export const projects: readonly Project[] = [
     description:
       "A collection of object-detection and image-classification projects using TensorFlow, Keras, Flask, and OpenCV. A Streamlit app classifies cat and dog photos with a Keras model: 64×64 RGB input, normalized by 1/255. A Flask app loads a Keras model and classifies a photo as one of six bird species: American goldfinch, barn owl, carmine bee-eater, downy woodpecker, emperor penguin, and flamingo. Vehicle detection is in the same repository and is listed on its own.",
     tags: ["TensorFlow", "Keras", "Flask", "OpenCV", "Streamlit"],
+    cover: "/covers/birds.webp",
+    coverAlt: "A bird photo from the public image-recognition sample set.",
     links: [
       {
         label: "Repository",
@@ -197,7 +203,8 @@ export const projects: readonly Project[] = [
     description:
       "Splits a script or story into scenes and generates a preview image for each scene through image-generation APIs, with a Streamlit front end. The repository includes the project documentation. Stack: FastAPI, Streamlit, Pydantic, Pillow, and aiohttp.",
     tags: ["FastAPI", "Streamlit", "Pydantic", "Pillow", "aiohttp"],
-    cover: "/covers/story.jpg",
+    cover: "/covers/story.webp",
+    coverAlt: "Cover art for the story-to-image project.",
     links: [
       {
         label: "Explore Project",
@@ -214,7 +221,8 @@ export const projects: readonly Project[] = [
     description:
       "Upload CSV, Excel, or SQL data and ask questions in natural language. The app generates charts, runs automated EDA (a data-quality score, correlations, and KPIs), and exports PDF executive reports. It includes JWT with role-based access and audit logging.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Plotly", "Redis", "Celery", "Docker"],
-    cover: "/covers/insights.jpg",
+    cover: "/covers/insights.webp",
+    coverAlt: "Cover art for Automated Data Insights.",
     links: [],
     note: "No public repository.",
     featured: true,
@@ -227,7 +235,8 @@ export const projects: readonly Project[] = [
     description:
       "Scraped about 4,000 Skytrax reviews with BeautifulSoup, cleaned them with NLTK, and scored sentiment with TextBlob, including word clouds. Trained a Random Forest on about 50,000 booking records to predict booking completion, at 85% accuracy. The same repository includes the Accenture North America data-analytics simulation and the Standard Bank data-science simulation (both Aug 2024).",
     tags: ["Python", "NLTK", "scikit-learn", "pandas", "BeautifulSoup"],
-    cover: "/covers/sentiment.jpg",
+    cover: "/covers/sentiment.webp",
+    coverAlt: "Cover art for the data-science simulation repository.",
     links: [
       { label: "Explore Project", href: "https://github.com/talha-81/forage" },
     ],
@@ -272,6 +281,20 @@ export function projectsInGroup(id: GroupId) {
 
 export function projectBySlug(slug: string | undefined) {
   return projects.find((project) => project.slug === slug);
+}
+
+const homeSlugs = [
+  "ticketing-management-system",
+  "ai-chatbot-with-mcp",
+  "vehicle-detection",
+] as const;
+
+export function homeProjects() {
+  return homeSlugs.map((slug) => {
+    const project = projectBySlug(slug);
+    if (!project) throw new Error(`Missing home project: ${slug}`);
+    return project;
+  });
 }
 
 export function featuredProjects() {

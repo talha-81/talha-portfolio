@@ -8,13 +8,15 @@ Built with React, Vite, TypeScript, Tailwind CSS, Framer Motion, React Router, a
 
 - `/` Home
 - `/about` About
+- `/services` Services
 - `/projects` Project list
 - `/projects/:slug` Project detail
 - `/ai` AI products
 - `/skills` Skills
-- `/contact` WhatsApp, GitHub, and LinkedIn
+- `/contact` WhatsApp, Email, GitHub, and LinkedIn buttons
+- `/faq` FAQ
 
-Contact is those three links only. There is no email address and no form on the site.
+Contact is icon-and-label buttons only. The phone number is shown only inside the WhatsApp popover. That popover can open the chat or copy the number. There is no contact form.
 
 ## Run locally
 
@@ -39,7 +41,7 @@ The repo includes `netlify.toml`:
 
 - Build command: `npm run build`
 - Publish directory: `dist`
-- SPA redirects for `/about`, `/projects`, `/projects/*`, `/ai`, `/skills`, `/contact`, and a `/*` fallback to `/index.html` (status 200)
+- SPA redirects for `/about`, `/services`, `/projects`, `/projects/*`, `/ai`, `/skills`, `/contact`, `/faq`, and a `/*` fallback to `/index.html` (status 200)
 
 Connect the repository in Netlify and use the settings from that file. No environment variables are required. This project is not deployed from here.
 
@@ -58,7 +60,7 @@ Zoru is always shown, fixed at the bottom-right. There is no hide control. On a 
 - `public/mascot/zoru-chibi-512.webp` (323×512, used first)
 - `public/mascot/zoru-chibi.png` (454×720 fallback)
 
-GitHub, LinkedIn, and WhatsApp clicks call `celebrateZoru()` from `src/lib/mascot.ts`.
+GitHub, LinkedIn, Email, and WhatsApp clicks call `celebrateZoru()` from `src/lib/mascot.ts`. A round WhatsApp button sits at the bottom-left, away from Zoru.
 
 ## Figures
 

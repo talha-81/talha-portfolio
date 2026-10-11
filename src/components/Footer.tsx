@@ -1,33 +1,71 @@
+import { useReducedMotion } from "framer-motion";
+import { ArrowUp } from "lucide-react";
+import type { MouseEvent } from "react";
 import { Link } from "react-router";
-import {
-  aiWorkflowLine,
-  availability,
-  navLinks,
-  profile,
-  serviceAreas,
-  whatsappHref,
-  whatsappNumber,
-} from "../data/content.ts";
-import { celebrateZoru } from "../lib/mascot.ts";
+import { aiWorkflowLine, availability, footerLinks, profile, serviceAreas, services } from "../data/content.ts";
+import { ContactButtons } from "./ContactButtons.tsx";
 
 const year = 2026;
 
-const socials = [
-  { label: "WhatsApp", href: whatsappHref, detail: whatsappNumber },
-  { label: "GitHub", href: profile.github, detail: "github.com/talha-81" },
-  { label: "LinkedIn", href: profile.linkedin, detail: "talha-arshad81" },
+const particles = [
+  { top: "12%", left: "8%", size: 6, delay: "0s" },
+  { top: "22%", left: "72%", size: 4, delay: "1.2s" },
+  { top: "38%", left: "46%", size: 5, delay: "0.6s" },
+  { top: "8%", left: "88%", size: 7, delay: "1.8s" },
+  { top: "58%", left: "18%", size: 4, delay: "0.4s" },
+  { top: "48%", left: "92%", size: 5, delay: "1.4s" },
 ];
 
+function onSpotlight(event: MouseEvent<HTMLElement>) {
+  const rect = event.currentTarget.getBoundingClientRect();
+  event.currentTarget.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+  event.currentTarget.style.setProperty("--my", `${event.clientY - rect.top}px`);
+}
+
 export function Footer() {
+  const reduce = useReducedMotion();
+
   return (
-    <footer className="border-t border-line pt-16 pb-28 md:pt-20">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-6">
+    <footer className="footer-aurora relative overflow-hidden border-t border-line" onMouseMove={onSpotlight}>
+      <div className="hero-grid pointer-events-none absolute inset-0 opacity-80" />
+      <p
+        aria-hidden="true"
+        className="text-stroke pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-display text-[clamp(4.5rem,18vw,15rem)] leading-none font-bold tracking-tighter whitespace-nowrap opacity-40 select-none"
+      >
+        TALHA
+      </p>
+      {particles.map((dot) => (
+        <span
+          key={`${dot.top}-${dot.left}`}
+          aria-hidden="true"
+          className="footer-particle glow-pulse"
+          style={{
+            top: dot.top,
+            left: dot.left,
+            width: dot.size,
+            height: dot.size,
+            animationDelay: dot.delay,
+          }}
+        />
+      ))}
+
+      <div className="relative mx-auto max-w-6xl px-5 pt-16 sm:px-8 md:pt-24">
+        <div className="max-w-3xl">
+          <p className="text-xs font-semibold tracking-[0.22em] text-accent uppercase">Start</p>
+          <h2 className="mt-3 font-display text-[clamp(3rem,8vw,6.4rem)] leading-[0.88] font-bold tracking-tighter text-fg">
+            Let&apos;s <span className="text-stroke">build</span> something
+            <span className="text-accent">.</span>
+          </h2>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{availability}</p>
+          <ContactButtons className="mt-8" size="lg" labels={["WhatsApp", "Email"]} />
+        </div>
+
+        <div className="mt-16 grid gap-10 rounded-[32px] border border-line bg-surface/80 p-6 shadow-[var(--shadow)] backdrop-blur-md sm:p-8 lg:grid-cols-12">
+          <div className="lg:col-span-4">
             <p className="font-display text-sm font-bold tracking-[0.28em] text-fg">
               TALHA<span className="text-accent">.</span>
             </p>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
+            <p className="mt-4 text-sm leading-relaxed text-muted">
               Web applications, management systems, AI products, and automation. {availability}
             </p>
             <p className="mt-3 text-sm font-medium text-fg">{aiWorkflowLine}</p>
@@ -40,11 +78,11 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 lg:col-span-6">
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Menu</p>
               <ul className="mt-4 space-y-3">
-                {navLinks.map((link) => (
+                {footerLinks.map((link) => (
                   <li key={link.href}>
                     <Link to={link.href} className="text-sm font-medium text-fg hover:text-accent">
                       {link.label}
@@ -54,29 +92,34 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Contact</p>
+              <p className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Services</p>
               <ul className="mt-4 space-y-3">
-                {socials.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      onClick={() => celebrateZoru()}
-                      className="text-sm font-medium text-fg hover:text-accent"
-                    >
-                      {item.label}
-                      <span className="mt-0.5 block text-xs font-normal text-muted">{item.detail}</span>
-                    </a>
+                {services.map((service) => (
+                  <li key={service.title}>
+                    <Link to="/services" className="text-sm font-medium text-fg hover:text-accent">
+                      {service.title}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
+            <div>
+              <p className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Contact</p>
+              <ContactButtons className="mt-4" />
+            </div>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-line pt-6 pb-36 text-sm text-muted sm:flex-row sm:items-center sm:justify-between md:pb-44">
           <p>© {year} Talha Arshad. All rights reserved.</p>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" })}
+            className="inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full border border-line bg-surface px-4 text-sm font-semibold text-fg transition hover:-translate-y-0.5 hover:border-accent sm:self-auto"
+          >
+            Back to top
+            <ArrowUp size={16} />
+          </button>
           <p>{profile.location}</p>
         </div>
       </div>
