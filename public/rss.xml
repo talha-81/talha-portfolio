@@ -5,6 +5,13 @@
     <link>https://talha-ai.netlify.app/blog</link>
     <description>Notes on AI agents, automation, and remote software work by Talha Arshad.</description>
     <item>
+      <title>Your AI Agent Works in the Demo. Here's Why It Breaks in Production.</title>
+      <link>https://talha-ai.netlify.app/blog/why-ai-agents-break-in-production</link>
+      <guid>https://talha-ai.netlify.app/blog/why-ai-agents-break-in-production</guid>
+      <pubDate>Wed, 14 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Why AI agents break in production: tool-call failures, retries, hallucinations, memory, approvals, observability, and recovery, with a fix for each.</description>
+    </item>
+    <item>
       <title>10 Business Processes You Can Automate with AI Agents</title>
       <link>https://talha-ai.netlify.app/blog/10-business-processes-automate-ai-agents</link>
       <guid>https://talha-ai.netlify.app/blog/10-business-processes-automate-ai-agents</guid>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none" role="img" aria-label="Illustrated split between a clean agent demo and a production path with a break and a recovery checkpoint">
+  <rect width="1200" height="675" fill="#0d1116"/>
+  <g opacity="0.35" stroke="#ffffff" stroke-width="1">
+    <path d="M0 48H1200M0 144H1200M0 240H1200M0 336H1200M0 432H1200M0 528H1200M0 624H1200"/>
+    <path d="M80 0V675M200 0V675M320 0V675M440 0V675M560 0V675M680 0V675M800 0V675M920 0V675M1040 0V675M1160 0V675"/>
+  </g>
+  <circle cx="980" cy="140" r="170" fill="#00df8f" opacity="0.1"/>
+  <circle cx="180" cy="540" r="120" fill="#00df8f" opacity="0.08"/>
+  <g font-family="Inter, ui-sans-serif, system-ui" fill="#ffffff">
+    <text x="72" y="118" font-size="18" letter-spacing="4" fill="#00df8f" font-weight="700">PRODUCTION</text>
+    <text x="72" y="188" font-size="52" font-weight="700">The demo path</text>
+    <text x="72" y="252" font-size="52" font-weight="700">is not the live one.</text>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="600">
+    <rect x="72" y="300" width="150" height="44" rx="22" fill="#14181f" stroke="#00df8f"/>
+    <text x="104" y="328" fill="#ffffff">Demo</text>
+    <path d="M222 322H300" stroke="#00df8f" stroke-width="2"/>
+    <rect x="300" y="300" width="170" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="332" y="328" fill="#ffffff">Tool call</text>
+    <path d="M470 322H548" stroke="#ffffff" stroke-width="2" opacity="0.35"/>
+    <rect x="548" y="292" width="150" height="60" rx="18" fill="#14181f" stroke="#00df8f" stroke-dasharray="6 5"/>
+    <text x="586" y="328" fill="#00df8f">Break</text>
+  </g>
+  <g>
+    <rect x="760" y="168" width="360" height="320" rx="28" fill="#14181f" stroke="#00df8f" stroke-width="2"/>
+    <text x="796" y="220" fill="#00df8f" font-family="Inter, ui-sans-serif" font-size="14" letter-spacing="3" font-weight="700">HOLD UP</text>
+    <text x="796" y="268" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="28" font-weight="700">Trace it.</text>
+    <text x="796" y="312" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="28" font-weight="700">Retry once.</text>
+    <text x="796" y="356" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="28" font-weight="700">Then hand off.</text>
+    <rect x="796" y="392" width="196" height="40" rx="20" fill="#00df8f"/>
+    <text x="824" y="418" fill="#06281c" font-family="Inter, ui-sans-serif" font-size="15" font-weight="700">Human approves</text>
+  </g>
+  <path d="M623 352V470H760" stroke="#00df8f" stroke-width="2" opacity="0.7"/>
+</svg>
