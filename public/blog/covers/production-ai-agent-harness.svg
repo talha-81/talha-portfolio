@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none" role="img" aria-label="Architecture diagram showing a replaceable language model inside a runtime with permission checks, sandboxed tools, durable state, traces, and evaluation feedback.">
+  <rect width="1200" height="675" fill="#0d1116"/>
+  <g opacity="0.35" stroke="#ffffff" stroke-width="1">
+    <path d="M0 48H1200M0 144H1200M0 240H1200M0 336H1200M0 432H1200M0 528H1200M0 624H1200"/>
+    <path d="M80 0V675M200 0V675M320 0V675M440 0V675M560 0V675M680 0V675M800 0V675M920 0V675M1040 0V675M1160 0V675"/>
+  </g>
+  <circle cx="980" cy="140" r="170" fill="#00df8f" opacity="0.1"/>
+  <circle cx="180" cy="540" r="120" fill="#00df8f" opacity="0.08"/>
+  <g font-family="Inter, ui-sans-serif, system-ui" fill="#ffffff">
+    <text x="72" y="118" font-size="18" letter-spacing="4" fill="#00df8f" font-weight="700">HARNESS</text>
+    <text x="72" y="188" font-size="52" font-weight="700">Swap the model.</text>
+    <text x="72" y="252" font-size="52" font-weight="700">Keep the runtime.</text>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="600">
+    <rect x="72" y="312" width="148" height="44" rx="22" fill="#14181f" stroke="#00df8f" stroke-dasharray="6 5"/>
+    <text x="100" y="340" fill="#00df8f">Model</text>
+    <path d="M220 334H286" stroke="#00df8f" stroke-width="2"/>
+    <rect x="286" y="312" width="148" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="322" y="340" fill="#ffffff">Policy</text>
+    <path d="M434 334H500" stroke="#ffffff" stroke-width="2" opacity="0.35"/>
+    <rect x="500" y="312" width="168" height="44" rx="22" fill="#14181f" stroke="#00df8f"/>
+    <text x="528" y="340" fill="#ffffff">Sandbox</text>
+  </g>
+  <g>
+    <rect x="740" y="148" width="380" height="390" rx="28" fill="#14181f" stroke="#00df8f" stroke-width="2"/>
+    <text x="776" y="200" fill="#00df8f" font-family="Inter, ui-sans-serif" font-size="14" letter-spacing="3" font-weight="700">RUNTIME</text>
+    <text x="776" y="252" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="26" font-weight="700">Permissions</text>
+    <text x="776" y="302" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="26" font-weight="700">Sandboxed tools</text>
+    <text x="776" y="352" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="26" font-weight="700">Durable state</text>
+    <text x="776" y="402" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="26" font-weight="700">Traces</text>
+    <rect x="776" y="440" width="196" height="40" rx="20" fill="#00df8f"/>
+    <text x="804" y="466" fill="#06281c" font-family="Inter, ui-sans-serif" font-size="15" font-weight="700">Eval feedback</text>
+  </g>
+  <path d="M584 356V500H740" stroke="#00df8f" stroke-width="2" opacity="0.7"/>
+</svg>
