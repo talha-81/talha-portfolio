@@ -5,6 +5,13 @@
     <link>https://talha-ai.netlify.app/blog</link>
     <description>Notes on AI agents, automation, and remote software work by Talha Arshad.</description>
     <item>
+      <title>The Agent Harness Matters More Than the Model</title>
+      <link>https://talha-ai.netlify.app/blog/production-ai-agent-harness</link>
+      <guid>https://talha-ai.netlify.app/blog/production-ai-agent-harness</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>Build production AI agents with a reliable harness: least-privilege tools, sandboxing, evals, traces, and a control loop that handles failure.</description>
+    </item>
+    <item>
       <title>Your AI Agent Works in the Demo. Here's Why It Breaks in Production.</title>
       <link>https://talha-ai.netlify.app/blog/why-ai-agents-break-in-production</link>
       <guid>https://talha-ai.netlify.app/blog/why-ai-agents-break-in-production</guid>
