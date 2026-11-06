@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none" role="img" aria-label="Diagram of an AI agent connected to calendar, repo search, and ticket system servers through a central policy gateway that checks, redacts, and approves each tool call">
+  <rect width="1200" height="675" fill="#0d1116"/>
+  <g opacity="0.35" stroke="#ffffff" stroke-width="1">
+    <path d="M0 48H1200M0 144H1200M0 240H1200M0 336H1200M0 432H1200M0 528H1200M0 624H1200"/>
+    <path d="M80 0V675M200 0V675M320 0V675M440 0V675M560 0V675M680 0V675M800 0V675M920 0V675M1040 0V675M1160 0V675"/>
+  </g>
+  <circle cx="960" cy="150" r="180" fill="#00df8f" opacity="0.1"/>
+  <circle cx="200" cy="540" r="130" fill="#00df8f" opacity="0.08"/>
+  <g font-family="Inter, ui-sans-serif, system-ui" fill="#ffffff">
+    <text x="72" y="118" font-size="18" letter-spacing="4" fill="#00df8f" font-weight="700">SECURE MCP</text>
+    <text x="72" y="188" font-size="52" font-weight="700">Every call</text>
+    <text x="72" y="252" font-size="52" font-weight="700">passes the gate.</text>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="600">
+    <rect x="72" y="312" width="150" height="44" rx="22" fill="#14181f" stroke="#00df8f"/>
+    <text x="100" y="340" fill="#ffffff">Calendar</text>
+    <rect x="238" y="312" width="190" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="266" y="340" fill="#ffffff">Repo search</text>
+    <rect x="444" y="312" width="150" height="44" rx="22" fill="#14181f" stroke="rgba(255,255,255,0.16)"/>
+    <text x="480" y="340" fill="#ffffff">Tickets</text>
+  </g>
+  <g stroke="#00df8f" stroke-width="2" opacity="0.7">
+    <path d="M147 356V430H760"/>
+    <path d="M333 356V400H760"/>
+    <path d="M519 356V370H760"/>
+  </g>
+  <g>
+    <rect x="760" y="168" width="360" height="340" rx="28" fill="#14181f" stroke="#00df8f" stroke-width="2"/>
+    <text x="796" y="220" fill="#00df8f" font-family="Inter, ui-sans-serif" font-size="14" letter-spacing="3" font-weight="700">GATEWAY</text>
+    <text x="796" y="272" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="28" font-weight="700">Check</text>
+    <text x="796" y="320" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="28" font-weight="700">Redact</text>
+    <text x="796" y="368" fill="#ffffff" font-family="Inter, ui-sans-serif" font-size="28" font-weight="700">Approve</text>
+    <rect x="796" y="404" width="188" height="40" rx="20" fill="#00df8f"/>
+    <text x="824" y="430" fill="#06281c" font-family="Inter, ui-sans-serif" font-size="15" font-weight="700">Scoped token</text>
+  </g>
+</svg>

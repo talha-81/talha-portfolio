@@ -12,6 +12,13 @@
       <description>Build production AI agents with a reliable harness: least-privilege tools, sandboxing, evals, traces, and a control loop that handles failure.</description>
     </item>
     <item>
+      <title>Secure MCP Toolchains: Giving Agents Tools Without the Leaks</title>
+      <link>https://talha-ai.netlify.app/blog/secure-mcp-toolchains</link>
+      <guid>https://talha-ai.netlify.app/blog/secure-mcp-toolchains</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>A practical architecture for securing MCP tool access: a policy gateway, strict schemas, scoped tokens, write approvals, and recoverable errors.</description>
+    </item>
+    <item>
       <title>Your AI Agent Works in the Demo. Here's Why It Breaks in Production.</title>
       <link>https://talha-ai.netlify.app/blog/why-ai-agents-break-in-production</link>
       <guid>https://talha-ai.netlify.app/blog/why-ai-agents-break-in-production</guid>
