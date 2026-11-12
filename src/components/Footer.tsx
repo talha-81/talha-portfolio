@@ -63,7 +63,7 @@ export function Footer() {
             <StartProjectLink className="inline-flex min-h-11 items-center justify-center rounded-full bg-accent px-6 py-4 text-base font-semibold text-accent-ink transition hover:-translate-y-0.5 sm:text-lg">
               Start a project
             </StartProjectLink>
-            <ContactButtons size="lg" labels={["WhatsApp", "Email"]} />
+            <ContactButtons size="lg" labels={["Email"]} />
           </div>
         </div>
 

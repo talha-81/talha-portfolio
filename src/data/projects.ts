@@ -121,19 +121,19 @@ export const projects: readonly Project[] = [
     links: [],
   },
   {
-    slug: "whatsapp-automation",
+    slug: "messaging-automation",
     group: "ai",
-    title: "WhatsApp automation",
+    title: "Messaging automation",
     summary:
-      "Automated WhatsApp messaging flows, with exported n8n workflows and a FastAPI conversation API.",
+      "Automated messaging flows, with exported n8n workflows and a FastAPI conversation API.",
     description:
-      "Automated WhatsApp messaging flows. The public work includes exported n8n workflows and a FastAPI service that reads a chatbot's conversation history from Supabase, grouped by sender.",
-    tags: ["n8n", "FastAPI", "Supabase", "WhatsApp"],
+      "Automated messaging flows. The public work includes exported n8n workflows and a FastAPI service that reads a chatbot's conversation history from Supabase, grouped by sender.",
+    tags: ["n8n", "FastAPI", "Supabase"],
     cover: "/covers/automation.webp",
-    coverAlt: "Abstract cover art for the WhatsApp automation project.",
+    coverAlt: "Abstract cover art for the messaging automation project.",
     links: [
       { label: "n8n workflows", href: "https://github.com/talha-81/n8n" },
-      { label: "WhatsApp API", href: "https://github.com/talha-81/fast-api" },
+      { label: "Conversation API", href: "https://github.com/talha-81/fast-api" },
     ],
   },
   {

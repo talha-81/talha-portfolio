@@ -7,7 +7,6 @@ import { Footer } from "./Footer.tsx";
 import { Mascot } from "./Mascot.tsx";
 import { Navbar } from "./Navbar.tsx";
 import { useStructuredData } from "./StructuredData.tsx";
-import { WhatsAppButton } from "./WhatsAppButton.tsx";
 
 function load<T extends Record<string, ComponentType>>(importer: () => Promise<T>, name: keyof T & string) {
   return lazy(() => importer().then((module) => ({ default: module[name] })));
@@ -79,7 +78,6 @@ export function Layout() {
         </AnimatePresence>
       </main>
       <Footer />
-      <WhatsAppButton />
       <Mascot />
     </div>
   );

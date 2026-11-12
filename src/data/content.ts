@@ -7,13 +7,6 @@ export const profile = {
   repos: "https://github.com/talha-81?tab=repositories",
 } as const;
 
-const whatsappMessage = "Hi Talha, I'd like to discuss a project.";
-
-export const whatsappHref = `https://wa.me/923400957785?text=${encodeURIComponent(whatsappMessage)}`;
-
-/** Clipboard value only. Do not render this on the page. */
-export const whatsappNumber = "+923400957785";
-
 export const emailHref = "mailto:tarshad587@gmail.com";
 
 export const availability = "Available worldwide, remote, 24/7.";
@@ -61,7 +54,7 @@ export const services = [
   },
   {
     title: "APIs and automation",
-    text: "REST APIs, n8n workflows, and automated WhatsApp messaging.",
+    text: "REST APIs, n8n workflows, and automated messaging.",
   },
 ] as const;
 
@@ -94,7 +87,7 @@ export const processSteps = [
 export const faqs = [
   {
     q: "How do I start a project?",
-    a: "Use the form on the contact page, or the WhatsApp or Email button. GitHub and LinkedIn are there too.",
+    a: "Use the form on the contact page, or the Email button. GitHub and LinkedIn are there too.",
   },
   {
     q: "Where do you work?",

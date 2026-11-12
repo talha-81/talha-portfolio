@@ -13,10 +13,10 @@ Built with React, Vite, TypeScript, Tailwind CSS, Framer Motion, React Router, a
 - `/projects/:slug` Project detail
 - `/ai` AI products
 - `/skills` Skills
-- `/contact` WhatsApp, Email, GitHub, and LinkedIn buttons
+- `/contact` Email, GitHub, and LinkedIn buttons
 - `/faq` FAQ
 
-Contact has a form plus WhatsApp, Email, GitHub, and LinkedIn buttons. The phone number is shown only inside the WhatsApp popover. That popover can open the chat or copy the number.
+Contact has a form plus Email, GitHub, and LinkedIn buttons.
 
 ## Run locally
 
@@ -67,7 +67,7 @@ Talha, the chibi illustration, is always shown, fixed at the bottom-right. There
 - `public/mascot/mascot-chibi-512.webp` (323×512, used first)
 - `public/mascot/mascot-chibi.png` (454×720 fallback)
 
-GitHub, LinkedIn, Email, and WhatsApp clicks call `celebrateMascot()` from `src/lib/mascot.ts`. A round WhatsApp button sits at the bottom-left, away from the mascot.
+GitHub, LinkedIn, and Email clicks call `celebrateMascot()` from `src/lib/mascot.ts`.
 
 ## Figures
 

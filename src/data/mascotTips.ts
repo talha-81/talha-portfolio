@@ -5,8 +5,8 @@ export const sectionTips = {
   projects: "These are web systems, AI products, and machine-learning work. Open a card for the details.",
   ai: "I build chatbots, MCP tools, voice agents, and automation for client products.",
   skills: "I use Claude, ChatGPT, Cursor, and Codex to move faster. I still review the code.",
-  contact: "I'm available worldwide, remote, 24/7. WhatsApp or Email starts a project.",
-  faq: "WhatsApp or Email is how you start a project with me. I'm available worldwide, remote, 24/7.",
+  contact: "I'm available worldwide, remote, 24/7. Email starts a project.",
+  faq: "Email is how you start a project with me. I'm available worldwide, remote, 24/7.",
   blog: "Notes on AI agents, automation, and the processes I take on for clients.",
   missing: "That page isn't here. Head back to the work, or start a project.",
 } as const;
@@ -19,7 +19,7 @@ export const navTips: Record<string, string> = {
   "/ai": "Chatbots, voice agents, MCP, and automation.",
   "/skills": "The technologies behind the projects.",
   "/blog": "Notes on AI agents and automation.",
-  "/contact": "Send a message, or use WhatsApp, Email, GitHub, or LinkedIn.",
+  "/contact": "Send a message, or use Email, GitHub, or LinkedIn.",
   "/faq": "A few answers before you write.",
 };
 
@@ -29,7 +29,7 @@ export const serviceTips: Record<string, string> = {
   "AI chatbots": "I build support bots, booking bots, and chat that reads live data through MCP.",
   "Voice and call agents": "I build call agents that book a time or answer a caller's questions.",
   "Computer vision and machine learning": "I work on detection, image models, and classical machine learning.",
-  "APIs and automation": "I build REST APIs, n8n workflows, and WhatsApp messaging flows.",
+  "APIs and automation": "I build REST APIs, n8n workflows, and messaging flows.",
 };
 
 export const statTips: Record<string, string> = {
@@ -39,7 +39,6 @@ export const statTips: Record<string, string> = {
 };
 
 export const contactTips: Record<string, string> = {
-  WhatsApp: "Tap to chat on WhatsApp or copy the number.",
   Email: "Email me about a project.",
   GitHub: "Open my public repositories.",
   LinkedIn: "Open my LinkedIn profile.",
