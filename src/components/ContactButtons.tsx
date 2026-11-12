@@ -2,15 +2,9 @@ import { Mail } from "lucide-react";
 import { emailHref, profile } from "../data/content.ts";
 import { celebrateMascot } from "../lib/mascot.ts";
 import { contactTips } from "../data/mascotTips.ts";
-import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from "./BrandIcons.tsx";
-import { WhatsAppChoice } from "./WhatsAppChoice.tsx";
+import { GitHubIcon, LinkedInIcon } from "./BrandIcons.tsx";
 
 const channels = [
-  {
-    label: "WhatsApp",
-    icon: WhatsAppIcon,
-    tone: "bg-[#25D366] text-white border-transparent",
-  },
   {
     label: "Email",
     href: emailHref,
@@ -53,17 +47,6 @@ export function ContactButtons({ size = "md", className = "", labels }: ContactB
         const buttonClass = `inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-4 font-semibold transition hover:-translate-y-0.5 ${
           large ? "px-6 py-4 text-base sm:text-lg" : "py-2.5 text-sm"
         } ${channel.tone}`;
-
-        if (!("href" in channel)) {
-          return (
-            <li key={channel.label} className="min-w-0">
-              <WhatsAppChoice className={buttonClass} tip={contactTips.WhatsApp}>
-                <Icon className={large ? "h-5 w-5" : "h-4 w-4"} />
-                WhatsApp
-              </WhatsAppChoice>
-            </li>
-          );
-        }
 
         return (
           <li key={channel.label} className="min-w-0">

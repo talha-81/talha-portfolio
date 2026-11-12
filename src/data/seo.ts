@@ -36,7 +36,7 @@ const pages: Record<string, PageSeo> = {
   "/ai": {
     title: "AI Developer — Chatbots, Voice Agents & MCP",
     description:
-      "AI chatbot and voice agent developer. MCP tools, appointment agents, lead automation, and WhatsApp flows, built remotely.",
+      "AI chatbot and voice agent developer. MCP tools, appointment agents, lead automation, and messaging flows, built remotely.",
   },
   "/skills": {
     title: "Skills — React, Python, AI & Computer Vision",
@@ -46,7 +46,7 @@ const pages: Record<string, PageSeo> = {
   "/contact": {
     title: "Contact Talha Arshad — Remote AI Developer",
     description:
-      "Contact Talha Arshad, a remote AI and web developer. Send a project note or reach him on WhatsApp, email, GitHub, or LinkedIn.",
+      "Contact Talha Arshad, a remote AI and web developer. Send a project note or reach him on email, GitHub, or LinkedIn.",
   },
   "/faq": {
     title: "FAQ — Hiring a Remote AI & Web Developer",

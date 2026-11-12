@@ -106,7 +106,7 @@ export function ContactForm() {
       <div className="rounded-[32px] border border-line bg-surface/90 p-8 shadow-[var(--shadow)] sm:p-10" role="status">
         <p className="text-xs font-semibold tracking-[0.22em] text-accent uppercase">Sent</p>
         <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-fg">Thanks! I&apos;ll get back to you soon.</h2>
-        <p className="mt-4 max-w-xl text-muted">Your note is on its way. You can also reach me on WhatsApp or Email.</p>
+        <p className="mt-4 max-w-xl text-muted">Your note is on its way. You can also reach me by Email, GitHub, or LinkedIn.</p>
         <ContactButtons className="mt-8" />
       </div>
     );
@@ -248,7 +248,7 @@ export function ContactForm() {
 
       {status === "error" ? (
         <p className="mt-5 text-sm text-[#e06a62]" role="alert">
-          The message didn&apos;t send. Use WhatsApp or Email instead.
+          The message didn&apos;t send. Use Email, GitHub, or LinkedIn instead.
         </p>
       ) : null}
 

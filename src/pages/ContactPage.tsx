@@ -24,7 +24,7 @@ export function ContactPage() {
             </span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Send a message and I&apos;ll get back to you. WhatsApp, Email, GitHub, and LinkedIn are here as well. I work remotely, worldwide, 24/7.
+            Send a message and I&apos;ll get back to you. Email, GitHub, and LinkedIn are here as well. I work remotely, worldwide, 24/7.
           </p>
           <ContactButtons size="lg" className="mt-10" />
         </div>
@@ -44,7 +44,7 @@ export function ContactPage() {
           </div>
           <aside className="rounded-[32px] border border-line bg-surface/80 p-6 shadow-[var(--shadow)] lg:sticky lg:top-28">
             <h2 className="font-display text-2xl font-semibold text-fg">Or reach me directly</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted">WhatsApp, Email, GitHub, and LinkedIn stay open if you&apos;d rather not use the form.</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted">Email, GitHub, and LinkedIn stay open if you&apos;d rather not use the form.</p>
             <ContactButtons className="mt-6" />
           </aside>
         </div>

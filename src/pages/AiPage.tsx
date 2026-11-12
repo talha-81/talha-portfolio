@@ -13,7 +13,7 @@ const lanes = [
   { title: "Agents", text: "Call and voice agents that book a time or answer a question." },
   { title: "Chatbots", text: "Support, appointments, and chat that can read live data through MCP." },
   { title: "MCP", text: "Servers that pull live data from a database into the conversation." },
-  { title: "Automation", text: "n8n workflows, lead generation, and WhatsApp messaging flows." },
+  { title: "Automation", text: "n8n workflows, lead generation, and messaging flows." },
   { title: "Vision and ML", text: "OpenCV detection, Keras and TensorFlow image models, and classical ML." },
 ];
 
@@ -87,7 +87,7 @@ export function AiPage() {
         lede={
           <>
             <p>
-              AI products for clients: chatbots, MCP tools that read a live database, voice and call agents, lead generation, and WhatsApp automation. {availability}
+              AI products for clients: chatbots, MCP tools that read a live database, voice and call agents, lead generation, and messaging automation. {availability}
             </p>
             <p className="mt-3 text-sm font-medium text-fg">{aiWorkflowLine}</p>
           </>
@@ -117,7 +117,7 @@ export function AiPage() {
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
           <h2 className="font-display text-4xl font-semibold tracking-tight text-fg">AI products</h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-            WhatsApp automation links its public n8n and FastAPI repositories. The other products on this page are not linked to a public repository.
+            Messaging automation links its public n8n and FastAPI repositories. The other products on this page are not linked to a public repository.
           </p>
           <ul className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {aiProjects.map((project) => (
